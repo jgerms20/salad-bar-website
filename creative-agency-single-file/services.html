@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | The Salad Bar Company</title>
+    
     <!-- Open Graph / Social Share -->
     <meta property="og:title" content="Services | The Salad Bar Company">
     <meta property="og:description" content="From strategy to execution, we offer a full menu of creative services.">
     <meta property="og:image" content="https://jgerms20.github.io/salad-bar-website/Images/team%20Headshots/Joshua%20German.jpg">
-    <title>Services | The Salad Bar Company</title>
+    
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&family=Space+Mono:wght@400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -38,8 +41,7 @@
             <a href="work.html">Work</a>
             <a href="services.html" class="active">Services</a>
             <a href="contact.html">Contact</a>
-            <a href="contact.html" class="btn" style="margin-top:1rem;">Start a Project</a>
-        </div>
+            <a href="contact.html" class="btn">Start a Project</a>
         </div>
     </nav>
 
@@ -47,12 +49,13 @@
         <div class="container">
             <span class="badge">Capabilities</span>
             <h1>What We Bring <span class="text-gradient">to the Table</span></h1>
-            <p>From strategy to execution, we offer a full menu of creative services. Click any service to expand.</p>
+            <p>We offer a full menu of creative services. Tap any service to expand.</p>
         </div>
     </section>
 
     <section class="container section">
-        <div class="services-accordion">
+        <!-- First 10 services (always visible) -->
+        <div class="services-accordion" id="servicesMain">
             
             <div class="accordion-item active" data-index="0">
                 <div class="accordion-header">
@@ -60,7 +63,7 @@
                     <h3>Brand Strategy</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Market positioning, audience research, competitive analysis, and brand identity development. We find the "why" before we build the "what". Our strategic approach ensures every creative decision ladders up to business objectives.</p>
+                    <p>Market positioning, audience research, competitive analysis, and brand identity development. We find the "why" before we build the "what".</p>
                 </div>
             </div>
 
@@ -70,7 +73,7 @@
                     <h3>Filmmaking</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>End-to-end film production from concept to delivery. Commercials, narrative films, branded content, and music videos. We handle scripting, casting, production, and post-production under one roof.</p>
+                    <p>End-to-end film production from concept to delivery. Commercials, narrative films, branded content, and music videos.</p>
                 </div>
             </div>
 
@@ -80,7 +83,7 @@
                     <h3>Documentary Making</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Authentic storytelling that captures real moments and real people. We create compelling documentaries for brands, organizations, and causes that need their stories told with nuance and craft.</p>
+                    <p>Authentic storytelling that captures real moments and real people. We create compelling documentaries for brands and causes.</p>
                 </div>
             </div>
 
@@ -90,7 +93,7 @@
                     <h3>Photography</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Campaign photography, product shoots, portraits, lifestyle content, and event coverage. High-quality imagery that elevates your brand across all touchpoints.</p>
+                    <p>Campaign photography, product shoots, portraits, lifestyle content, and event coverage. High-quality imagery for all touchpoints.</p>
                 </div>
             </div>
 
@@ -110,7 +113,7 @@
                     <h3>Social Media & Content</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Content calendars, community management, influencer partnerships, and paid media strategy. We build engaged audiences that convert into loyal customers.</p>
+                    <p>Content calendars, community management, influencer partnerships, and paid media strategy. We build engaged audiences.</p>
                 </div>
             </div>
 
@@ -140,7 +143,7 @@
                     <h3>Business Operations</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Workflow optimization, project management, operational efficiency consulting, and process design for creative teams and organizations.</p>
+                    <p>Workflow optimization, project management, operational efficiency consulting, and process design for creative teams.</p>
                 </div>
             </div>
 
@@ -150,17 +153,29 @@
                     <h3>Event Production</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Experiential activations, live events, brand experiences, and launch parties. We create memorable moments that generate buzz and build community.</p>
+                    <p>Experiential activations, live events, brand experiences, and launch parties. We create memorable moments that build community.</p>
                 </div>
             </div>
 
+        </div>
+
+        <!-- See More Button -->
+        <div class="see-more-btn" id="seeMoreBtn">
+            <button class="btn btn-outline" onclick="toggleMoreServices()">
+                <span id="seeMoreText">See 10 More Services ↓</span>
+            </button>
+        </div>
+
+        <!-- Hidden services (11-20) -->
+        <div class="services-hidden" id="servicesHidden">
+            
             <div class="accordion-item" data-index="10">
                 <div class="accordion-header">
                     <span class="accordion-num">11</span>
                     <h3>Podcast Production</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Concept development, recording, editing, mixing, and distribution strategy. Launch a podcast that grows your audience and establishes thought leadership.</p>
+                    <p>Concept development, recording, editing, mixing, and distribution strategy. Launch a podcast that establishes thought leadership.</p>
                 </div>
             </div>
 
@@ -170,7 +185,7 @@
                     <h3>Influencer Marketing</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Talent identification, outreach, contract negotiation, and campaign management. We connect brands with the right voices for authentic partnerships.</p>
+                    <p>Talent identification, outreach, contract negotiation, and campaign management. We connect brands with the right voices.</p>
                 </div>
             </div>
 
@@ -180,7 +195,7 @@
                     <h3>Creative Consulting</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>We embed with your team to optimize creative workflows and provide executive-level direction on campaigns, brand positioning, and content strategy.</p>
+                    <p>We embed with your team to optimize creative workflows and provide executive-level direction on campaigns and strategy.</p>
                 </div>
             </div>
 
@@ -190,7 +205,7 @@
                     <h3>Web & Digital Design</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Website design, landing pages, and digital experiences that convert visitors into customers. Modern, responsive, and built for performance.</p>
+                    <p>Website design, landing pages, and digital experiences that convert visitors into customers. Modern and responsive.</p>
                 </div>
             </div>
 
@@ -200,7 +215,7 @@
                     <h3>App Development</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Mobile and web application development from concept to launch. We build intuitive, scalable apps that solve real problems for your users.</p>
+                    <p>Mobile and web application development from concept to launch. We build intuitive, scalable apps that solve real problems.</p>
                 </div>
             </div>
 
@@ -210,7 +225,7 @@
                     <h3>AI Consulting</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>AI integration strategy, workflow automation, and creative AI implementation. We help you leverage AI tools to work smarter, not harder.</p>
+                    <p>AI integration strategy, workflow automation, and creative AI implementation. Leverage AI tools to work smarter.</p>
                 </div>
             </div>
 
@@ -220,7 +235,7 @@
                     <h3>Process Management</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>End-to-end project oversight, timeline management, vendor coordination, and quality assurance. We keep complex projects on track and on budget.</p>
+                    <p>End-to-end project oversight, timeline management, vendor coordination, and quality assurance for complex projects.</p>
                 </div>
             </div>
 
@@ -230,7 +245,7 @@
                     <h3>Event Planning</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Concept development, venue sourcing, vendor management, and logistics coordination. From intimate gatherings to large-scale activations.</p>
+                    <p>Concept development, venue sourcing, vendor management, and logistics coordination. From intimate gatherings to large activations.</p>
                 </div>
             </div>
 
@@ -240,7 +255,7 @@
                     <h3>Motion Graphics & Animation</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>2D/3D animation, motion design, explainer videos, and animated brand assets. Bring your ideas to life with dynamic visual storytelling.</p>
+                    <p>2D/3D animation, motion design, explainer videos, and animated brand assets. Dynamic visual storytelling.</p>
                 </div>
             </div>
 
@@ -250,7 +265,7 @@
                     <h3>Talent Management</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Creator partnerships, talent booking, contract negotiation, and relationship management. We connect you with the right voices for your brand.</p>
+                    <p>Creator partnerships, talent booking, contract negotiation, and relationship management. The right voices for your brand.</p>
                 </div>
             </div>
 
@@ -274,36 +289,49 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js">    // Mobile menu toggle
-        function toggleMobileMenu() {
-            const menu = document.querySelector('.mobile-menu');
-            const btn = document.querySelector('.mobile-menu-btn');
-            menu.classList.toggle('open');
-            btn.classList.toggle('open');
-        }
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js">    // Mobile menu toggle
-        function toggleMobileMenu() {
-            const menu = document.querySelector('.mobile-menu');
-            const btn = document.querySelector('.mobile-menu-btn');
-            menu.classList.toggle('open');
-            btn.classList.toggle('open');
-        }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
-        window.addEventListener('load', function() {
-            gsap.registerPlugin(ScrollTrigger);
+        let servicesExpanded = false;
+        
+        function toggleMoreServices() {
+            const hidden = document.getElementById('servicesHidden');
+            const btnText = document.getElementById('seeMoreText');
+            servicesExpanded = !servicesExpanded;
             
-            // Accordion functionality
+            if (servicesExpanded) {
+                hidden.classList.add('show');
+                btnText.textContent = 'Show Less ↑';
+                setupAccordion();
+                gsap.from('#servicesHidden .accordion-item', {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.4,
+                    stagger: 0.05,
+                    ease: 'power2.out'
+                });
+            } else {
+                hidden.classList.remove('show');
+                btnText.textContent = 'See 10 More Services ↓';
+                window.scrollTo({ top: document.getElementById('servicesMain').offsetTop - 100, behavior: 'smooth' });
+            }
+        }
+        
+        function setupAccordion() {
             const items = document.querySelectorAll('.accordion-item');
             items.forEach(item => {
-                item.addEventListener('click', () => {
+                item.onclick = function() {
                     items.forEach(i => i.classList.remove('active'));
-                    item.classList.add('active');
-                });
+                    this.classList.add('active');
+                };
             });
+        }
 
-            gsap.utils.toArray('.accordion-item').forEach((el, i) => {
+        window.addEventListener('load', function() {
+            gsap.registerPlugin(ScrollTrigger);
+            setupAccordion();
+
+            gsap.utils.toArray('#servicesMain .accordion-item').forEach((el, i) => {
                 gsap.to(el, {
                     scrollTrigger: { trigger: el, start: 'top 88%' },
                     opacity: 1,
@@ -314,7 +342,7 @@
                 });
             });
         });
-        // Mobile menu toggle
+
         function toggleMobileMenu() {
             const menu = document.querySelector('.mobile-menu');
             const btn = document.querySelector('.mobile-menu-btn');
