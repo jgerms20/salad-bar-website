@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About | The Salad Bar Company</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&family=Space+Mono:wght@400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .fade-up { opacity: 0; }
+        
+        /* Diamond/Circle Layout for Partners - BIGGER */
+        .partners-diamond {
+            position: relative;
+            width: 100%;
+            max-width: 850px;
+            height: 850px;
+            margin: 0 auto;
+        }
+        .partner-card {
+            position: absolute;
+            width: 280px;
+            perspective: 1000px;
+        }
+        /* Top */
+        .partner-card:nth-child(1) {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        /* Right */
+        .partner-card:nth-child(2) {
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+        }
+        /* Bottom */
+        .partner-card:nth-child(3) {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        /* Left */
+        .partner-card:nth-child(4) {
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+        
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .partner-card.flipped .card-inner { transform: rotateY(180deg); }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        .card-front {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+        .card-back {
+            background: linear-gradient(135deg, var(--green-primary), var(--green-bright));
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            color: white;
+        }
+        .partner-photo {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-secondary);
+        }
+        .partner-photo img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        .partner-card:hover .partner-photo img { transform: scale(1.05); }
+        .partner-front-info { padding: 1.25rem; text-align: center; }
+        .partner-role {
+            color: var(--green-bright);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.35rem;
+            display: block;
+        }
+        .partner-name { font-size: 1.35rem; margin-bottom: 0.35rem; }
+        .partner-hometown { font-size: 0.85rem; color: var(--text-muted); }
+        .tap-hint { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.75rem; }
+
+        .back-name { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.35rem; }
+        .back-role { font-size: 0.75rem; opacity: 0.8; margin-bottom: 1rem; text-transform: uppercase; }
+        .back-bio { font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.25rem; flex-grow: 1; opacity: 0.95; }
+        .back-interests h4 { font-size: 0.65rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .back-interests ul { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .back-interests li {
+            padding: 0.3rem 0.65rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 100px;
+            font-size: 0.7rem;
+        }
+
+        @media (max-width: 900px) {
+            .partners-diamond {
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            .partner-card {
+                position: relative;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                transform: none !important;
+                width: 90%;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><span class="logo-mark">🥗</span> THE SALAD BAR COMPANY</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About</a>
+                <a href="work.html">Work</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <a href="contact.html" class="btn btn-small">Start a Project</a>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <span class="badge">Our Story</span>
+            <h1>Meet The <span class="text-gradient">Partners</span></h1>
+        </div>
+    </section>
+
+    <section class="container" style="padding-bottom:4rem;">
+        <div class="story-block" style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+            <div class="story-text">
+                <h2 style="font-size:2.25rem; margin-bottom:1.5rem;">Four Friends. One Mission.</h2>
+                <p style="color:var(--text-secondary); font-size:1.05rem; line-height:1.8; margin-bottom:1.5rem;">
+                    The Salad Bar Company was founded in 2025 by four friends with a shared vision: to build a creative agency that truly serves its community. We saw a gap in the market—brands needed partners who understood culture, not just campaigns.
+                </p>
+                <p style="color:var(--text-secondary); font-size:1.05rem; line-height:1.8; margin-bottom:1.5rem;">
+                    Our founding team brings together decades of experience across advertising, content production, and business operations. <strong>Joshua, Corey, and Tarahgee</strong> cut their teeth in the fast-paced world of advertising and media production, working with major brands and understanding what makes content resonate. <strong>Janel</strong> brings a sharp financial acumen and operational excellence from her background in finance, ensuring every project runs smoothly from pitch to delivery.
+                </p>
+                <p style="color:var(--text-secondary); font-size:1.05rem; line-height:1.8;">
+                    Together, we mix diverse perspectives into something fresh—creative solutions that are strategic, beautifully executed, and rooted in the communities we serve.
+                </p>
+            </div>
+            <div style="background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-lg); padding:3rem;">
+                <div style="display:flex; align-items:baseline; gap:1rem; margin-bottom:2rem;">
+                    <span style="font-size:3.5rem; font-weight:900; color:var(--green-primary);">4</span>
+                    <span style="color:var(--text-muted);">Equal Partners</span>
+                </div>
+                <div style="display:flex; align-items:baseline; gap:1rem; margin-bottom:2rem;">
+                    <span style="font-size:3.5rem; font-weight:900; color:var(--green-primary);">25+</span>
+                    <span style="color:var(--text-muted);">Years Combined Experience</span>
+                </div>
+                <div style="display:flex; align-items:baseline; gap:1rem;">
+                    <span style="font-size:3.5rem; font-weight:900; color:var(--green-primary);">∞</span>
+                    <span style="color:var(--text-muted);">Fresh Ideas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header" style="text-align:center; margin-bottom:3rem;">
+                <span class="badge">The Team</span>
+                <h2 class="section-title">The Partners</h2>
+                <p style="color:var(--text-muted); max-width:500px; margin:1rem auto 0;">Click on a card to learn more about each partner.</p>
+            </div>
+            
+            <div class="partners-diamond" id="partnersGrid"></div>
+        </div>
+    </section>
+
+    <!-- New Section After Partners -->
+    <section class="section">
+        <div class="container">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+                <div>
+                    <span class="badge">Our Approach</span>
+                    <h2 style="font-size:2.25rem; margin-bottom:1.5rem;">Culture First. Always.</h2>
+                    <p style="color:var(--text-secondary); font-size:1.05rem; line-height:1.8; margin-bottom:1.5rem;">
+                        We don't just create content—we create cultural moments. Our team is embedded in the communities we serve, which means we understand what resonates before we even start brainstorming.
+                    </p>
+                    <p style="color:var(--text-secondary); font-size:1.05rem; line-height:1.8;">
+                        Based in Los Angeles and serving globally, we bring perspectives from across the country. This diversity is our superpower—it allows us to connect authentically with audiences nationwide.
+                    </p>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                    <div style="background:var(--green-pale); border-radius:var(--radius-md); padding:2rem; text-align:center;">
+                        <div style="font-size:2rem; margin-bottom:0.5rem;">🎯</div>
+                        <h4 style="font-size:1rem; margin-bottom:0.5rem;">Strategic</h4>
+                        <p style="font-size:0.8rem; color:var(--text-muted);">Data-informed decisions</p>
+                    </div>
+                    <div style="background:var(--green-pale); border-radius:var(--radius-md); padding:2rem; text-align:center;">
+                        <div style="font-size:2rem; margin-bottom:0.5rem;">🎨</div>
+                        <h4 style="font-size:1rem; margin-bottom:0.5rem;">Creative</h4>
+                        <p style="font-size:0.8rem; color:var(--text-muted);">Bold, original ideas</p>
+                    </div>
+                    <div style="background:var(--green-pale); border-radius:var(--radius-md); padding:2rem; text-align:center;">
+                        <div style="font-size:2rem; margin-bottom:0.5rem;">🤝</div>
+                        <h4 style="font-size:1rem; margin-bottom:0.5rem;">Collaborative</h4>
+                        <p style="font-size:0.8rem; color:var(--text-muted);">True partnership</p>
+                    </div>
+                    <div style="background:var(--green-pale); border-radius:var(--radius-md); padding:2rem; text-align:center;">
+                        <div style="font-size:2rem; margin-bottom:0.5rem;">🚀</div>
+                        <h4 style="font-size:1rem; margin-bottom:0.5rem;">Impactful</h4>
+                        <p style="font-size:0.8rem; color:var(--text-muted);">Results that matter</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Want to work with us?</h2>
+            <p>We'd love to hear about your project.</p>
+            <a href="contact.html" class="btn btn-white">Get In Touch</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo"><span class="logo-mark">🥗</span> THE SALAD BAR COMPANY</div>
+                <p style="color:var(--text-muted); font-size:0.75rem;">© 2025 The Salad Bar Company LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        // Partners in random order each time
+        const partners = [
+            {
+                name: "Joshua German",
+                role: "Head of Strategy",
+                hometown: "Columbia, South Carolina",
+                photo: "Images/team Headshots/Joshua German.jpg",
+                bio: "The visionary. Joshua blends data-driven insights with creative intuition to chart the course for every client engagement.",
+                interests: ["Basketball", "Hip-Hop", "Tech", "Travel"]
+            },
+            {
+                name: "Janel Moore",
+                role: "Head of Business Operations",
+                hometown: "Macon, Georgia",
+                photo: "Images/team Headshots/Janel Moore.JPG",
+                bio: "The engine. Janel ensures the company runs like a well-oiled machine with her background in finance.",
+                interests: ["Finance", "Wellness", "Real Estate", "Family"]
+            },
+            {
+                name: "Tarahgee Morris",
+                role: "Head of Social & Content",
+                hometown: "Jersey City, New Jersey",
+                photo: "Images/team Headshots/Tarahgee Morris.jpeg",
+                bio: "The storyteller. Tarahgee crafts compelling narratives and manages digital presence across platforms.",
+                interests: ["Fashion", "Music", "Content Creation", "Community"]
+            },
+            {
+                name: "Corey Lightner",
+                role: "Head of Production",
+                hometown: "Virginia Beach, Virginia",
+                photo: "Images/team Headshots/Corey Lightner.JPG",
+                bio: "The maker. Corey brings ideas to life through high-fidelity video, audio, and experiential production.",
+                interests: ["Film", "Photography", "Music Production", "Sports"]
+            }
+        ];
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        const grid = document.getElementById('partnersGrid');
+        const shuffledPartners = shuffle([...partners]);
+
+        shuffledPartners.forEach((p) => {
+            const card = document.createElement('div');
+            card.className = 'partner-card fade-up';
+            card.innerHTML = `
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="partner-photo">
+                            <img src="${p.photo}" alt="${p.name}">
+                        </div>
+                        <div class="partner-front-info">
+                            <span class="partner-role">${p.role}</span>
+                            <h3 class="partner-name">${p.name}</h3>
+                            <p class="partner-hometown">📍 ${p.hometown}</p>
+                            <div class="tap-hint">↻ Tap to flip</div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 class="back-name">${p.name}</h3>
+                        <span class="back-role">${p.role}</span>
+                        <p class="back-bio">${p.bio}</p>
+                        <div class="back-interests">
+                            <h4>Interests</h4>
+                            <ul>${p.interests.map(i => `<li>${i}</li>`).join('')}</ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+            card.addEventListener('click', () => card.classList.toggle('flipped'));
+            grid.appendChild(card);
+        });
+
+        window.addEventListener('load', function() {
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.utils.toArray('.fade-up').forEach(el => {
+                gsap.to(el, {
+                    scrollTrigger: { trigger: el, start: 'top 85%' },
+                    opacity: 1,
+                    y: 0, 
+                    duration: 0.7, 
+                    ease: 'power2.out'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
