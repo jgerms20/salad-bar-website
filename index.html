@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Salad Bar Company | Creative Production Agency</title>
+    
+    <!-- Open Graph / Social Share -->
+    <meta property="og:title" content="The Salad Bar Company | Creative Production Agency">
+    <meta property="og:description" content="Fresh ideas, premium execution. A full-service creative production company rooted in culture.">
+    <meta property="og:image" content="https://jgerms20.github.io/salad-bar-website/Images/team%20Headshots/Joshua%20German.jpg">
+    <meta property="og:url" content="https://jgerms20.github.io/salad-bar-website/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&family=Space+Mono:wght@400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -24,7 +33,21 @@
                 <a href="services.html">Services</a>
                 <a href="contact.html">Contact</a>
             </div>
-            <a href="contact.html" class="btn btn-small">Start a Project</a>
+            <a href="contact.html" class="btn btn-small nav-cta">Start a Project</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="work.html">Work</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+            <a href="contact.html" class="btn" style="margin-top:1rem;">Start a Project</a>
         </div>
     </nav>
 
@@ -183,6 +206,9 @@
                     </div>
                 </div>
             </div>
+            <div style="text-align:center; margin-top:2rem;">
+                <a href="services.html" class="btn">See All 20 Services</a>
+            </div>
         </div>
     </section>
 
@@ -190,7 +216,7 @@
     <section class="cta-section">
         <div class="container">
             <h2>Ready to start cooking?</h2>
-            <p>Let's mix something incredible together.</p>
+            <p>Let us mix something incredible together.</p>
             <a href="contact.html" class="btn btn-white">Get In Touch</a>
         </div>
     </section>
@@ -246,6 +272,14 @@
                 });
             });
         });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.querySelector('.mobile-menu');
+            const btn = document.querySelector('.mobile-menu-btn');
+            menu.classList.toggle('open');
+            btn.classList.toggle('open');
+        }
     </script>
 </body>
 </html>
