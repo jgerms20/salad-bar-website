@@ -152,9 +152,9 @@ h1, h2, h3, h4 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; co
 .navbar {
     position: fixed;
     top: 0; width: 100%;
-    padding: 1.25rem 0;
+    padding: 1rem 0;
     z-index: 100;
-    background: rgba(250, 253, 247, 0.95);
+    background: rgba(250, 253, 247, 0.98);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
 }
@@ -507,9 +507,10 @@ footer {
 .fade-up { transform: translateY(30px); }
 
 /* ===================================
-   MOBILE HAMBURGER MENU - FIXED
+   MOBILE HAMBURGER MENU
    =================================== */
 
+/* Hamburger button - HIDDEN on desktop */
 .mobile-menu-btn {
     display: none;
     flex-direction: column;
@@ -523,60 +524,59 @@ footer {
     padding: 8px;
     z-index: 200;
     border-radius: var(--radius-sm);
-    transition: background 0.3s ease;
 }
 .mobile-menu-btn:hover { 
     background: var(--green-pale); 
 }
 
-/* Hamburger lines */
+/* Three hamburger lines */
 .mobile-menu-btn span {
     display: block;
     width: 24px;
     height: 3px;
     background: var(--green-primary);
     border-radius: 2px;
+    margin: 3px 0;
     transition: all 0.3s ease;
 }
-.mobile-menu-btn span:nth-child(1) { margin-bottom: 5px; }
-.mobile-menu-btn span:nth-child(2) { margin-bottom: 5px; }
-.mobile-menu-btn span:nth-child(3) { margin-bottom: 0; }
 
-/* X animation when open */
+/* X animation when menu is open */
 .mobile-menu-btn.open span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+    transform: rotate(45deg) translate(5px, 5px);
 }
 .mobile-menu-btn.open span:nth-child(2) {
     opacity: 0;
-    transform: translateX(-10px);
 }
 .mobile-menu-btn.open span:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Mobile dropdown menu */
+/* Mobile dropdown menu - HIDDEN by default */
 .mobile-menu {
     display: none;
     position: fixed;
-    top: 60px;
+    top: 56px;
     left: 0;
     right: 0;
     background: var(--bg-primary);
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
     flex-direction: column;
-    gap: 0;
-    z-index: 150;
+    z-index: 999;
     border-bottom: 2px solid var(--green-primary);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
 }
+
+/* Show menu when open class is added */
 .mobile-menu.open {
     display: flex !important;
 }
+
+/* Menu links */
 .mobile-menu a {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-secondary);
-    padding: 1rem 0;
+    padding: 0.875rem 0;
     border-bottom: 1px solid var(--border);
     transition: all 0.3s ease;
     text-transform: uppercase;
@@ -587,7 +587,6 @@ footer {
 }
 .mobile-menu a:hover, .mobile-menu a.active {
     color: var(--green-primary);
-    padding-left: 0.5rem;
 }
 
 /* ===============================
@@ -612,12 +611,12 @@ footer {
     .nav-cta { display: none !important; }
     .mobile-menu-btn { display: flex !important; }
     
-    /* Navbar adjustments - simpler on mobile */
+    /* Navbar adjustments */
     .navbar { padding: 0.75rem 0; }
     .nav-container { padding: 0 1rem; }
     .logo { font-size: 1rem; }
     
-    /* Page Headers - MORE SPACE */
+    /* Page Headers */
     .page-header {
         padding: 7rem 0 2.5rem;
     }
@@ -656,7 +655,7 @@ footer {
     .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     
-    /* Contact page - FIX FLUSH LEFT */
+    /* Contact page padding */
     .contact-info {
         padding: 0 0.5rem;
     }
