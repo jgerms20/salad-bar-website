@@ -2,108 +2,114 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Open Graph / Social Share -->
-    <meta property="og:title" content="Work | The Salad Bar Company">
-    <meta property="og:description" content="A collection of campaigns and projects from our collective experience.">
-    <meta property="og:image" content="https://jgerms20.github.io/salad-bar-website/Images/team%20Headshots/Joshua%20German.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work | The Salad Bar Company</title>
+    
+    <!-- Open Graph / Social Share -->
+    <meta property="og:title" content="Our Work | The Salad Bar Company">
+    <meta property="og:description" content="See the brands we've partnered with and the work we've created together.">
+    <meta property="og:image" content="https://jgerms20.github.io/salad-bar-website/Images/team%20Headshots/Joshua%20German.jpg">
+    <meta property="og:url" content="https://jgerms20.github.io/salad-bar-website/work.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&family=Space+Mono:wght@400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .fade-up { opacity: 0; }
+        .fade-in, .fade-up { opacity: 0; }
         
+        /* Work Grid */
         .work-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
+            gap: 1.5rem;
         }
         .work-card {
-            aspect-ratio: 1;
-            border-radius: var(--radius-md);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.4s ease;
-            cursor: pointer;
             position: relative;
+            aspect-ratio: 1;
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            background-size: cover;
-            background-position: center;
-        }
-        .work-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
-            transition: 0.4s;
-        }
-        .work-card:hover::before {
-            background: linear-gradient(180deg, rgba(45,90,39,0.5) 0%, rgba(45,90,39,0.85) 100%);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
         }
         .work-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(45, 90, 39, 0.25);
-        }
-        .work-card-content {
-            position: relative;
-            z-index: 2;
-        }
-        .work-card-logo {
-            font-size: 1.6rem;
-            font-weight: 900;
-            color: white;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        .work-card-category {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.85);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-family: var(--font-mono);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(45, 90, 39, 0.2);
         }
         .work-card.featured {
             grid-column: span 2;
             grid-row: span 2;
         }
-        .work-card.featured .work-card-logo {
-            font-size: 3.5rem;
+        .work-card-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s ease;
         }
-        .work-card.featured .work-card-category {
-            font-size: 0.85rem;
+        .work-card:hover .work-card-bg {
+            transform: scale(1.1);
+        }
+        .work-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 46, 26, 0.9) 0%, rgba(26, 46, 26, 0.3) 50%, transparent 100%);
+            transition: background 0.3s ease;
+        }
+        .work-card:hover .work-card-overlay {
+            background: linear-gradient(to top, rgba(45, 90, 39, 0.95) 0%, rgba(45, 90, 39, 0.5) 50%, rgba(45, 90, 39, 0.2) 100%);
+        }
+        .work-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            color: white;
+            transform: translateY(10px);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        .work-card:hover .work-card-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .work-card h3 { 
+            font-size: 1.25rem; 
+            color: white;
+            margin-bottom: 0.25rem;
+        }
+        .work-card.featured h3 { font-size: 2rem; }
+        .work-card p { 
+            font-size: 0.8rem; 
+            opacity: 0.8; 
         }
         
         /* See More Card */
         .work-card.see-more {
-            background: var(--green-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--green-pale), var(--bg-secondary));
             border: 2px dashed var(--green-primary);
         }
-        .work-card.see-more::before {
-            display: none;
-        }
-        .work-card.see-more .work-card-logo {
-            color: var(--green-primary);
-            font-size: 1.25rem;
-        }
-        .work-card.see-more .work-card-category {
-            color: var(--text-muted);
-        }
         .work-card.see-more:hover {
-            background: var(--green-primary);
-            border-color: var(--green-primary);
+            background: linear-gradient(135deg, var(--green-primary), var(--green-bright));
+            border-color: transparent;
         }
-        .work-card.see-more:hover .work-card-logo,
-        .work-card.see-more:hover .work-card-category {
+        .work-card.see-more h3 {
+            color: var(--green-primary);
+            transition: color 0.3s ease;
+        }
+        .work-card.see-more:hover h3 {
             color: white;
         }
         
         @media (max-width: 900px) {
-            .work-grid { grid-template-columns: repeat(2, 1fr); }
-            .work-card.featured { grid-column: span 2; grid-row: span 1; }
+            .work-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .work-card.featured { grid-column: span 2; grid-row: span 1; aspect-ratio: 16/9; }
         }
         @media (max-width: 500px) {
             .work-grid { grid-template-columns: 1fr; }
@@ -115,7 +121,9 @@
 
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo"><span class="logo-mark">🥗</span> THE SALAD BAR COMPANY</a>
+            <a href="index.html" class="logo">
+                <span class="logo-mark">🥗</span> THE SALAD BAR COMPANY
+            </a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
@@ -130,129 +138,169 @@
                 <span></span>
             </button>
         </div>
+        <!-- Mobile Menu -->
         <div class="mobile-menu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="work.html">Work</a>
+            <a href="work.html" class="active">Work</a>
             <a href="services.html">Services</a>
             <a href="contact.html">Contact</a>
-            <a href="contact.html" class="btn" style="margin-top:1rem;">Start a Project</a>
-        </div>
         </div>
     </nav>
 
-    <section class="page-header">
+    <div class="page-header">
         <div class="container">
-            <span class="badge">Portfolio</span>
-            <h1>Our <span class="text-gradient">Work</span></h1>
-            <p>A collection of campaigns and projects from our collective experience across top agencies and brands.</p>
+            <span class="badge fade-in">Our Portfolio</span>
+            <h1 class="fade-in">Selected Work</h1>
+            <p class="fade-in">A taste of the brands we've partnered with and the work we've created together.</p>
         </div>
-    </section>
+    </div>
 
     <section class="container section">
         <div class="work-grid">
+            <!-- Featured: Apple -->
+            <div class="work-card featured fade-up">
+                <div class="work-card-bg" style="background-image: url('https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&q=80');"></div>
+                <div class="work-card-overlay"></div>
+                <div class="work-card-content">
+                    <h3>Apple</h3>
+                    <p>Product Launch Campaign</p>
+                </div>
+            </div>
             
-            <div class="work-card featured fade-up" style="background-image: url('https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&q=80');">
+            <!-- Levi's -->
+            <div class="work-card fade-up">
+                <div class="work-card-bg" style="background-image: url('https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&q=80');"></div>
+                <div class="work-card-overlay"></div>
                 <div class="work-card-content">
-                    <div class="work-card-logo">Apple</div>
-                    <span class="work-card-category">Brand Campaign</span>
+                    <h3>Levi's</h3>
+                    <p>Brand Campaign</p>
                 </div>
             </div>
-
-            <div class="work-card fade-up" style="background-image: url('https://images.unsplash.com/photo-1582552938357-32b906df40cb?w=600&q=80');">
+            
+            <!-- DirecTV -->
+            <div class="work-card fade-up">
+                <div class="work-card-bg" style="background-image: url('https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&q=80');"></div>
+                <div class="work-card-overlay"></div>
                 <div class="work-card-content">
-                    <div class="work-card-logo">Levi's</div>
-                    <span class="work-card-category">Brand Campaign</span>
+                    <h3>DirecTV</h3>
+                    <p>Commercial Production</p>
                 </div>
             </div>
-
-            <div class="work-card fade-up" style="background-image: url('https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=600&q=80');">
+            
+            <!-- Gatorade -->
+            <div class="work-card fade-up">
+                <div class="work-card-bg" style="background-image: url('https://images.unsplash.com/photo-1461896836934- voices7vdu44?w=600&q=80'), linear-gradient(135deg, #F5793A, #FF9A00);"></div>
+                <div class="work-card-overlay"></div>
                 <div class="work-card-content">
-                    <div class="work-card-logo">DIRECTV</div>
-                    <span class="work-card-category">OOH Campaign</span>
+                    <h3>Gatorade</h3>
+                    <p>Athlete Content Series</p>
                 </div>
             </div>
-
-            <div class="work-card fade-up" style="background-image: url('https://images.unsplash.com/photo-1461896836934- voices-of-ai?w=600&q=80'), linear-gradient(135deg, #F57C00, #FF9800);">
+            
+            <!-- DoorDash -->
+            <div class="work-card fade-up">
+                <div class="work-card-bg" style="background-image: url('https://images.unsplash.com/photo-1526367790999-0150786686a2?w=600&q=80');"></div>
+                <div class="work-card-overlay"></div>
                 <div class="work-card-content">
-                    <div class="work-card-logo">Gatorade</div>
-                    <span class="work-card-category">Sports Marketing</span>
+                    <h3>DoorDash</h3>
+                    <p>Social Content</p>
                 </div>
             </div>
-
-            <div class="work-card fade-up" style="background-image: url('https://images.unsplash.com/photo-1526367790999-0150786686a2?w=600&q=80');">
+            
+            <!-- Sam Adams -->
+            <div class="work-card fade-up">
+                <div class="work-card-bg" style="background-image: url('https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&q=80');"></div>
+                <div class="work-card-overlay"></div>
                 <div class="work-card-content">
-                    <div class="work-card-logo">DoorDash</div>
-                    <span class="work-card-category">Integrated Campaign</span>
+                    <h3>Sam Adams</h3>
+                    <p>Brand Documentary</p>
                 </div>
             </div>
-
-            <div class="work-card featured fade-up" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80');">
+            
+            <!-- BMW -->
+            <div class="work-card fade-up">
+                <div class="work-card-bg" style="background-image: url('https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80');"></div>
+                <div class="work-card-overlay"></div>
                 <div class="work-card-content">
-                    <div class="work-card-logo">Sephora</div>
-                    <span class="work-card-category">Beauty Campaign</span>
+                    <h3>BMW</h3>
+                    <p>Launch Film</p>
                 </div>
             </div>
-
-            <div class="work-card fade-up" style="background-image: url('https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=600&q=80');">
+            
+            <!-- Sephora -->
+            <div class="work-card fade-up">
+                <div class="work-card-bg" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80');"></div>
+                <div class="work-card-overlay"></div>
                 <div class="work-card-content">
-                    <div class="work-card-logo">Samuel Adams</div>
-                    <span class="work-card-category">Brand Platform</span>
+                    <h3>Sephora</h3>
+                    <p>Influencer Campaign</p>
                 </div>
             </div>
-
-            <div class="work-card fade-up" style="background-image: url('https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80');">
+            
+            <!-- Califia -->
+            <div class="work-card fade-up">
+                <div class="work-card-bg" style="background-image: url('https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&q=80');"></div>
+                <div class="work-card-overlay"></div>
                 <div class="work-card-content">
-                    <div class="work-card-logo">BMW</div>
-                    <span class="work-card-category">Automotive</span>
+                    <h3>Califia Farms</h3>
+                    <p>Product Photography</p>
                 </div>
             </div>
-
-            <div class="work-card fade-up" style="background-image: url('https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&q=80');">
+            
+            <!-- Behr Paint -->
+            <div class="work-card fade-up">
+                <div class="work-card-bg" style="background-image: url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=600&q=80');"></div>
+                <div class="work-card-overlay"></div>
                 <div class="work-card-content">
-                    <div class="work-card-logo">Califia Farms</div>
-                    <span class="work-card-category">CPG / Food & Bev</span>
+                    <h3>Behr Paint</h3>
+                    <p>Brand Refresh</p>
                 </div>
             </div>
-
-            <div class="work-card fade-up" style="background-image: url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=600&q=80');">
+            
+            <!-- Discover -->
+            <div class="work-card fade-up">
+                <div class="work-card-bg" style="background-image: url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=80');"></div>
+                <div class="work-card-overlay"></div>
                 <div class="work-card-content">
-                    <div class="work-card-logo">Behr Paint</div>
-                    <span class="work-card-category">Consumer Products</span>
+                    <h3>Discover</h3>
+                    <p>Financial Campaign</p>
                 </div>
             </div>
-
-            <div class="work-card fade-up" style="background-image: url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&q=80');">
-                <div class="work-card-content">
-                    <div class="work-card-logo">Discover</div>
-                    <span class="work-card-category">Financial Services</span>
-                </div>
-            </div>
-
+            
+            <!-- See More -->
             <div class="work-card see-more fade-up">
-                <div class="work-card-content">
-                    <div class="work-card-logo">See More →</div>
-                    <span class="work-card-category">Coming Soon</span>
+                <div class="work-card-content" style="position:static; text-align:center; transform:none; opacity:1;">
+                    <h3>See More →</h3>
+                    <p style="color:var(--text-muted);">Coming Soon</p>
                 </div>
             </div>
-
         </div>
     </section>
 
+    <!-- CTA -->
     <section class="cta-section">
         <div class="container">
-            <p style="margin-bottom:0.5rem; opacity:0.8;">This represents our collective agency experience.</p>
-            <h2>Interested in what we can do for you?</h2>
-            <a href="contact.html" class="btn btn-white" style="margin-top:1.5rem;">Start a Project</a>
+            <h2>Want to be on this list?</h2>
+            <p>Let's create something amazing together.</p>
+            <a href="contact.html" class="btn btn-white">Start a Project</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="logo"><span class="logo-mark">🥗</span> THE SALAD BAR COMPANY</div>
-                <p style="color:var(--text-muted); font-size:0.75rem;">© 2025 The Salad Bar Company LLC. All rights reserved.</p>
+                <div>
+                    <div class="logo" style="margin-bottom:1rem;"><span class="logo-mark">🥗</span> THE SALAD BAR COMPANY</div>
+                    <p style="color:var(--text-muted); max-width:300px; font-size:0.9rem;">Fresh ideas, premium execution. Based in the culture, built for impact.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Twitter</a>
+                </div>
             </div>
+            <p style="color:var(--text-muted); font-size:0.75rem; margin-top:3rem;">© 2025 The Salad Bar Company LLC. All rights reserved.</p>
         </div>
     </footer>
 
@@ -261,17 +309,35 @@
     <script>
         window.addEventListener('load', function() {
             gsap.registerPlugin(ScrollTrigger);
+            
+            gsap.to('.fade-in', { 
+                opacity: 1, 
+                y: 0, 
+                duration: 0.8, 
+                stagger: 0.15, 
+                ease: 'power3.out',
+                delay: 0.2
+            });
+            
             gsap.utils.toArray('.fade-up').forEach((el, i) => {
                 gsap.to(el, {
-                    scrollTrigger: { trigger: el, start: 'top 85%' },
+                    scrollTrigger: { trigger: el, start: 'top 90%' },
                     opacity: 1,
                     y: 0, 
-                    duration: 0.5, 
-                    delay: i * 0.05, 
+                    duration: 0.5,
+                    delay: i * 0.05,
                     ease: 'power2.out'
                 });
             });
         });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.querySelector('.mobile-menu');
+            const btn = document.querySelector('.mobile-menu-btn');
+            menu.classList.toggle('open');
+            btn.classList.toggle('open');
+        }
     </script>
 </body>
 </html>

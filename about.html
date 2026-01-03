@@ -2,140 +2,162 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Open Graph / Social Share -->
-    <meta property="og:title" content="About | The Salad Bar Company">
-    <meta property="og:description" content="Meet the partners behind The Salad Bar Company.">
-    <meta property="og:image" content="https://jgerms20.github.io/salad-bar-website/Images/team%20Headshots/Joshua%20German.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | The Salad Bar Company</title>
+    
+    <!-- Open Graph / Social Share -->
+    <meta property="og:title" content="About Us | The Salad Bar Company">
+    <meta property="og:description" content="Meet the team behind The Salad Bar Company - culture-first creatives building impactful work.">
+    <meta property="og:image" content="https://jgerms20.github.io/salad-bar-website/Images/team%20Headshots/Joshua%20German.jpg">
+    <meta property="og:url" content="https://jgerms20.github.io/salad-bar-website/about.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&family=Space+Mono:wght@400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .fade-up { opacity: 0; }
+        .fade-in, .fade-up { opacity: 0; }
         
-        /* Diamond/Circle Layout for Partners - BIGGER */
+        /* Diamond Layout for Partners */
         .partners-diamond {
             position: relative;
             width: 100%;
-            max-width: 850px;
-            height: 850px;
+            max-width: 800px;
+            height: 700px;
             margin: 0 auto;
         }
-        .partner-card {
+        .partner-position {
             position: absolute;
-            width: 280px;
-            perspective: 1000px;
+            transition: all 0.5s ease;
         }
-        /* Top */
-        .partner-card:nth-child(1) {
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        /* Right */
-        .partner-card:nth-child(2) {
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-        }
-        /* Bottom */
-        .partner-card:nth-child(3) {
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        /* Left */
-        .partner-card:nth-child(4) {
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-        }
+        .partner-position.top { top: 0; left: 50%; transform: translateX(-50%); }
+        .partner-position.right { top: 50%; right: 0; transform: translateY(-50%); }
+        .partner-position.bottom { bottom: 0; left: 50%; transform: translateX(-50%); }
+        .partner-position.left { top: 50%; left: 0; transform: translateY(-50%); }
         
+        .partner-card {
+            width: 240px;
+            height: 320px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
         .card-inner {
             position: relative;
             width: 100%;
-            height: 420px;
+            height: 100%;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
-            cursor: pointer;
         }
-        .partner-card.flipped .card-inner { transform: rotateY(180deg); }
+        .partner-card:hover .card-inner,
+        .partner-card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
         .card-front, .card-back {
             position: absolute;
             width: 100%;
             height: 100%;
-            -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
             border-radius: var(--radius-lg);
             overflow: hidden;
+            border: 2px solid var(--border);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
         .card-front {
             background: var(--card-bg);
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+        .card-front img {
+            width: 100%;
+            height: 65%;
+            object-fit: cover;
+        }
+        .card-front .info {
+            padding: 1.25rem;
+            text-align: center;
+        }
+        .card-front h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+        .card-front .role { 
+            font-size: 0.75rem; 
+            color: var(--green-primary); 
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .card-front .hometown { 
+            font-size: 0.7rem; 
+            color: var(--text-muted); 
+            margin-top: 0.25rem;
         }
         .card-back {
             background: linear-gradient(135deg, var(--green-primary), var(--green-bright));
             transform: rotateY(180deg);
             display: flex;
             flex-direction: column;
-            padding: 2rem;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            text-align: center;
             color: white;
         }
-        .partner-photo {
-            height: 220px;
-            position: relative;
-            overflow: hidden;
-            background: var(--bg-secondary);
+        .card-back h3 { color: white; font-size: 1.1rem; margin-bottom: 0.75rem; }
+        .card-back p { font-size: 0.85rem; line-height: 1.5; opacity: 0.9; }
+        .card-back .interests { 
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.3);
         }
-        .partner-photo img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-        }
-        .partner-card:hover .partner-photo img { transform: scale(1.05); }
-        .partner-front-info { padding: 1.25rem; text-align: center; }
-        .partner-role {
-            color: var(--green-bright);
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.35rem;
-            display: block;
-        }
-        .partner-name { font-size: 1.35rem; margin-bottom: 0.35rem; }
-        .partner-hometown { font-size: 0.85rem; color: var(--text-muted); }
-        .tap-hint { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.75rem; }
-
-        .back-name { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.35rem; }
-        .back-role { font-size: 0.75rem; opacity: 0.8; margin-bottom: 1rem; text-transform: uppercase; }
-        .back-bio { font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.25rem; flex-grow: 1; opacity: 0.95; }
-        .back-interests h4 { font-size: 0.65rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-        .back-interests ul { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .back-interests li {
-            padding: 0.3rem 0.65rem;
+        .card-back .interests span { 
+            display: inline-block;
             background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.5rem;
             border-radius: 100px;
+            margin: 0.25rem;
             font-size: 0.7rem;
         }
-
+        
+        /* Culture Section */
+        .culture-section {
+            text-align: center;
+            padding: 5rem 0;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        }
+        .culture-section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+        .culture-section p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
         @media (max-width: 900px) {
             .partners-diamond {
                 height: auto;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
+                padding: 0 1rem;
             }
-            .partner-card {
+            .partner-position {
                 position: relative;
                 top: auto !important;
                 left: auto !important;
                 right: auto !important;
                 bottom: auto !important;
                 transform: none !important;
-                width: 90%;
-                max-width: 320px;
+            }
+            .partner-card {
+                width: 100%;
+                max-width: 280px;
+                height: 340px;
+                margin: 0 auto;
+            }
+        }
+        @media (max-width: 500px) {
+            .partners-diamond {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -144,7 +166,9 @@
 
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo"><span class="logo-mark">🥗</span> THE SALAD BAR COMPANY</a>
+            <a href="index.html" class="logo">
+                <span class="logo-mark">🥗</span> THE SALAD BAR COMPANY
+            </a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html" class="active">About</a>
@@ -159,111 +183,147 @@
                 <span></span>
             </button>
         </div>
+        <!-- Mobile Menu -->
         <div class="mobile-menu">
             <a href="index.html">Home</a>
-            <a href="about.html">About</a>
+            <a href="about.html" class="active">About</a>
             <a href="work.html">Work</a>
             <a href="services.html">Services</a>
             <a href="contact.html">Contact</a>
-            <a href="contact.html" class="btn" style="margin-top:1rem;">Start a Project</a>
-        </div>
         </div>
     </nav>
 
-    <section class="page-header">
+    <div class="page-header">
         <div class="container">
-            <span class="badge">Our Story</span>
-            <h1>Meet The <span class="text-gradient">Partners</span></h1>
+            <span class="badge fade-in">Who We Are</span>
+            <h1 class="fade-in">The Salad Bar Company</h1>
+            <p class="fade-in">Founded in 2025 by four friends with diverse skill sets—rooted in advertising, production, and business operations—we came together to build something different. A company that puts culture first, serves communities authentically, and creates work that actually matters.</p>
         </div>
-    </section>
+    </div>
 
-    <section class="container" style="padding-bottom:4rem;">
-        <div class="story-block" style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
-            <div class="story-text">
-                <h2 style="font-size:2.25rem; margin-bottom:1.5rem;">Four Friends. One Mission.</h2>
-                <p style="color:var(--text-secondary); font-size:1.05rem; line-height:1.8; margin-bottom:1.5rem;">
-                    The Salad Bar Company was founded in 2025 by four friends with a shared vision: to build a creative agency that truly serves its community. We saw a gap in the market—brands needed partners who understood culture, not just campaigns.
-                </p>
-                <p style="color:var(--text-secondary); font-size:1.05rem; line-height:1.8; margin-bottom:1.5rem;">
-                    Our founding team brings together decades of experience across advertising, content production, and business operations. <strong>Joshua, Corey, and Tarahgee</strong> cut their teeth in the fast-paced world of advertising and media production, working with major brands and understanding what makes content resonate. <strong>Janel</strong> brings a sharp financial acumen and operational excellence from her background in finance, ensuring every project runs smoothly from pitch to delivery.
-                </p>
-                <p style="color:var(--text-secondary); font-size:1.05rem; line-height:1.8;">
-                    Together, we mix diverse perspectives into something fresh—creative solutions that are strategic, beautifully executed, and rooted in the communities we serve.
-                </p>
-            </div>
-            <div style="background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-lg); padding:3rem;">
-                <div style="display:flex; align-items:baseline; gap:1rem; margin-bottom:2rem;">
-                    <span style="font-size:3.5rem; font-weight:900; color:var(--green-primary);">4</span>
-                    <span style="color:var(--text-muted);">Equal Partners</span>
-                </div>
-                <div style="display:flex; align-items:baseline; gap:1rem; margin-bottom:2rem;">
-                    <span style="font-size:3.5rem; font-weight:900; color:var(--green-primary);">25+</span>
-                    <span style="color:var(--text-muted);">Years Combined Experience</span>
-                </div>
-                <div style="display:flex; align-items:baseline; gap:1rem;">
-                    <span style="font-size:3.5rem; font-weight:900; color:var(--green-primary);">∞</span>
-                    <span style="color:var(--text-muted);">Fresh Ideas</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section section-alt">
+    <!-- Partners Section -->
+    <section class="section">
         <div class="container">
             <div class="section-header" style="text-align:center; margin-bottom:3rem;">
                 <span class="badge">The Team</span>
-                <h2 class="section-title">The Partners</h2>
-                <p style="color:var(--text-muted); max-width:500px; margin:1rem auto 0;">Click on a card to learn more about each partner.</p>
+                <h2 class="section-title">Meet the Partners</h2>
+                <p class="text-muted">Click a card to learn more</p>
             </div>
             
-            <div class="partners-diamond" id="partnersGrid"></div>
-        </div>
-    </section>
-
-    <!-- New Section After Partners -->
-    <section class="section">
-        <div class="container">
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
-                <div>
-                    <span class="badge">Our Approach</span>
-                    <h2 style="font-size:2.25rem; margin-bottom:1.5rem;">Culture First. Always.</h2>
-                    <p style="color:var(--text-secondary); font-size:1.05rem; line-height:1.8; margin-bottom:1.5rem;">
-                        We don't just create content—we create cultural moments. Our team is embedded in the communities we serve, which means we understand what resonates before we even start brainstorming.
-                    </p>
-                    <p style="color:var(--text-secondary); font-size:1.05rem; line-height:1.8;">
-                        Based in Los Angeles and serving globally, we bring perspectives from across the country. This diversity is our superpower—it allows us to connect authentically with audiences nationwide.
-                    </p>
+            <div class="partners-diamond" id="partnersGrid">
+                <div class="partner-position top fade-up">
+                    <div class="partner-card" onclick="this.classList.toggle('flipped')">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="Images/team Headshots/Joshua German.jpg" alt="Joshua German" onerror="this.src='https://via.placeholder.com/300x200/2D5A27/FFFFFF?text=Joshua'">
+                                <div class="info">
+                                    <h3>Joshua German</h3>
+                                    <div class="role">Head of Strategy</div>
+                                    <div class="hometown">Columbia, SC</div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>Joshua German</h3>
+                                <p>Strategist by training, creative by nature. Joshua brings a decade of brand strategy experience from top agencies.</p>
+                                <div class="interests">
+                                    <span>Travel</span>
+                                    <span>Music</span>
+                                    <span>Film</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-                    <div style="background:var(--green-pale); border-radius:var(--radius-md); padding:2rem; text-align:center;">
-                        <div style="font-size:2rem; margin-bottom:0.5rem;">🎯</div>
-                        <h4 style="font-size:1rem; margin-bottom:0.5rem;">Strategic</h4>
-                        <p style="font-size:0.8rem; color:var(--text-muted);">Data-informed decisions</p>
+                
+                <div class="partner-position right fade-up">
+                    <div class="partner-card" onclick="this.classList.toggle('flipped')">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="Images/team Headshots/Janel Moore.JPG" alt="Janel Moore" onerror="this.src='https://via.placeholder.com/300x200/2D5A27/FFFFFF?text=Janel'">
+                                <div class="info">
+                                    <h3>Janel Moore</h3>
+                                    <div class="role">Head of Business Operations</div>
+                                    <div class="hometown">Macon, GA</div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>Janel Moore</h3>
+                                <p>The engine behind our operations. Janel ensures every project runs smoothly from kickoff to delivery.</p>
+                                <div class="interests">
+                                    <span>Finance</span>
+                                    <span>Wellness</span>
+                                    <span>Community</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div style="background:var(--green-pale); border-radius:var(--radius-md); padding:2rem; text-align:center;">
-                        <div style="font-size:2rem; margin-bottom:0.5rem;">🎨</div>
-                        <h4 style="font-size:1rem; margin-bottom:0.5rem;">Creative</h4>
-                        <p style="font-size:0.8rem; color:var(--text-muted);">Bold, original ideas</p>
+                </div>
+                
+                <div class="partner-position bottom fade-up">
+                    <div class="partner-card" onclick="this.classList.toggle('flipped')">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="Images/team Headshots/Tarahgee Morris.jpeg" alt="Tarahgee Morris" onerror="this.src='https://via.placeholder.com/300x200/2D5A27/FFFFFF?text=Tarahgee'">
+                                <div class="info">
+                                    <h3>Tarahgee Morris</h3>
+                                    <div class="role">Head of Social & Content</div>
+                                    <div class="hometown">Jersey City, NJ</div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>Tarahgee Morris</h3>
+                                <p>Culture curator and content mastermind. Tarahgee knows what resonates and how to make it happen.</p>
+                                <div class="interests">
+                                    <span>Fashion</span>
+                                    <span>Art</span>
+                                    <span>Social Media</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div style="background:var(--green-pale); border-radius:var(--radius-md); padding:2rem; text-align:center;">
-                        <div style="font-size:2rem; margin-bottom:0.5rem;">🤝</div>
-                        <h4 style="font-size:1rem; margin-bottom:0.5rem;">Collaborative</h4>
-                        <p style="font-size:0.8rem; color:var(--text-muted);">True partnership</p>
-                    </div>
-                    <div style="background:var(--green-pale); border-radius:var(--radius-md); padding:2rem; text-align:center;">
-                        <div style="font-size:2rem; margin-bottom:0.5rem;">🚀</div>
-                        <h4 style="font-size:1rem; margin-bottom:0.5rem;">Impactful</h4>
-                        <p style="font-size:0.8rem; color:var(--text-muted);">Results that matter</p>
+                </div>
+                
+                <div class="partner-position left fade-up">
+                    <div class="partner-card" onclick="this.classList.toggle('flipped')">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="Images/team Headshots/Corey Lightner.JPG" alt="Corey Lightner" onerror="this.src='https://via.placeholder.com/300x200/2D5A27/FFFFFF?text=Corey'">
+                                <div class="info">
+                                    <h3>Corey Lightner</h3>
+                                    <div class="role">Head of Production</div>
+                                    <div class="hometown">Virginia Beach, VA</div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>Corey Lightner</h3>
+                                <p>Production powerhouse. Corey brings ideas to life with technical excellence and creative vision.</p>
+                                <div class="interests">
+                                    <span>Film</span>
+                                    <span>Sports</span>
+                                    <span>Tech</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Culture Section -->
+    <section class="culture-section">
+        <div class="container">
+            <span class="badge fade-up">Our Philosophy</span>
+            <h2 class="fade-up">Culture First. Always.</h2>
+            <p class="fade-up">We don't just make content—we build connections. Every project is an opportunity to create something that resonates with real people in real communities. That's the Salad Bar way.</p>
+        </div>
+    </section>
+
+    <!-- CTA -->
     <section class="cta-section">
         <div class="container">
-            <h2>Want to work with us?</h2>
-            <p>We'd love to hear about your project.</p>
+            <h2>Ready to join the table?</h2>
+            <p>Let's create something incredible together.</p>
             <a href="contact.html" class="btn btn-white">Get In Touch</a>
         </div>
     </section>
@@ -271,105 +331,53 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="logo"><span class="logo-mark">🥗</span> THE SALAD BAR COMPANY</div>
-                <p style="color:var(--text-muted); font-size:0.75rem;">© 2025 The Salad Bar Company LLC. All rights reserved.</p>
+                <div>
+                    <div class="logo" style="margin-bottom:1rem;"><span class="logo-mark">🥗</span> THE SALAD BAR COMPANY</div>
+                    <p style="color:var(--text-muted); max-width:300px; font-size:0.9rem;">Fresh ideas, premium execution. Based in the culture, built for impact.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Twitter</a>
+                </div>
             </div>
+            <p style="color:var(--text-muted); font-size:0.75rem; margin-top:3rem;">© 2025 The Salad Bar Company LLC. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
-        // Partners in random order each time
-        const partners = [
-            {
-                name: "Joshua German",
-                role: "Head of Strategy",
-                hometown: "Columbia, South Carolina",
-                photo: "Images/team Headshots/Joshua German.jpg",
-                bio: "The visionary. Joshua blends data-driven insights with creative intuition to chart the course for every client engagement.",
-                interests: ["Basketball", "Hip-Hop", "Tech", "Travel"]
-            },
-            {
-                name: "Janel Moore",
-                role: "Head of Business Operations",
-                hometown: "Macon, Georgia",
-                photo: "Images/team Headshots/Janel Moore.JPG",
-                bio: "The engine. Janel ensures the company runs like a well-oiled machine with her background in finance.",
-                interests: ["Finance", "Wellness", "Real Estate", "Family"]
-            },
-            {
-                name: "Tarahgee Morris",
-                role: "Head of Social & Content",
-                hometown: "Jersey City, New Jersey",
-                photo: "Images/team Headshots/Tarahgee Morris.jpeg",
-                bio: "The storyteller. Tarahgee crafts compelling narratives and manages digital presence across platforms.",
-                interests: ["Fashion", "Music", "Content Creation", "Community"]
-            },
-            {
-                name: "Corey Lightner",
-                role: "Head of Production",
-                hometown: "Virginia Beach, Virginia",
-                photo: "Images/team Headshots/Corey Lightner.JPG",
-                bio: "The maker. Corey brings ideas to life through high-fidelity video, audio, and experiential production.",
-                interests: ["Film", "Photography", "Music Production", "Sports"]
-            }
-        ];
-
-        function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-
-        const grid = document.getElementById('partnersGrid');
-        const shuffledPartners = shuffle([...partners]);
-
-        shuffledPartners.forEach((p) => {
-            const card = document.createElement('div');
-            card.className = 'partner-card fade-up';
-            card.innerHTML = `
-                <div class="card-inner">
-                    <div class="card-front">
-                        <div class="partner-photo">
-                            <img src="${p.photo}" alt="${p.name}">
-                        </div>
-                        <div class="partner-front-info">
-                            <span class="partner-role">${p.role}</span>
-                            <h3 class="partner-name">${p.name}</h3>
-                            <p class="partner-hometown">📍 ${p.hometown}</p>
-                            <div class="tap-hint">↻ Tap to flip</div>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <h3 class="back-name">${p.name}</h3>
-                        <span class="back-role">${p.role}</span>
-                        <p class="back-bio">${p.bio}</p>
-                        <div class="back-interests">
-                            <h4>Interests</h4>
-                            <ul>${p.interests.map(i => `<li>${i}</li>`).join('')}</ul>
-                        </div>
-                    </div>
-                </div>
-            `;
-            card.addEventListener('click', () => card.classList.toggle('flipped'));
-            grid.appendChild(card);
-        });
-
         window.addEventListener('load', function() {
             gsap.registerPlugin(ScrollTrigger);
+            
+            gsap.to('.fade-in', { 
+                opacity: 1, 
+                y: 0, 
+                duration: 0.8, 
+                stagger: 0.15, 
+                ease: 'power3.out',
+                delay: 0.2
+            });
+            
             gsap.utils.toArray('.fade-up').forEach(el => {
                 gsap.to(el, {
                     scrollTrigger: { trigger: el, start: 'top 85%' },
                     opacity: 1,
                     y: 0, 
-                    duration: 0.7, 
+                    duration: 0.6, 
                     ease: 'power2.out'
                 });
             });
         });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.querySelector('.mobile-menu');
+            const btn = document.querySelector('.mobile-menu-btn');
+            menu.classList.toggle('open');
+            btn.classList.toggle('open');
+        }
     </script>
 </body>
 </html>

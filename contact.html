@@ -2,30 +2,121 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Open Graph / Social Share -->
-    <meta property="og:title" content="Contact | The Salad Bar Company">
-    <meta property="og:description" content="Have a project in mind? We would love to hear about it.">
-    <meta property="og:image" content="https://jgerms20.github.io/salad-bar-website/Images/team%20Headshots/Joshua%20German.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | The Salad Bar Company</title>
+    
+    <!-- Open Graph / Social Share -->
+    <meta property="og:title" content="Contact Us | The Salad Bar Company">
+    <meta property="og:description" content="Let's create something amazing together. Reach out to start your next project.">
+    <meta property="og:image" content="https://jgerms20.github.io/salad-bar-website/Images/team%20Headshots/Joshua%20German.jpg">
+    <meta property="og:url" content="https://jgerms20.github.io/salad-bar-website/contact.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&family=Space+Mono:wght@400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-        .form-step { display: none; }
-        .form-step.active { display: block; }
-        .step-indicator { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
-        .step-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); transition: 0.3s; }
-        .step-dot.active { background: var(--green-primary); width: 30px; border-radius: 5px; }
-        .form-nav { display: flex; gap: 1rem; margin-top: 1.5rem; }
-        .form-nav .btn { flex: 1; }
-        .btn-back { background: transparent; border: 2px solid var(--border); color: var(--text-secondary); }
-        .btn-back:hover { border-color: var(--green-primary); color: var(--green-primary); background: transparent; }
+    <style>
+        .fade-in, .fade-up { opacity: 0; }
+        
+        /* Contact Page Specific */
+        .contact-section {
+            padding: 2rem 0 4rem;
+        }
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .contact-left {
+            padding: 1.5rem;
+        }
+        .contact-right {
+            padding: 1.5rem;
+        }
+        .form-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+        .form-step {
+            display: none;
+        }
+        .form-step.active {
+            display: block;
+        }
+        .step-indicator {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .step-dot {
+            width: 40px;
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            transition: background 0.3s ease;
+        }
+        .step-dot.active {
+            background: var(--green-primary);
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+        .social-link:hover {
+            background: var(--green-pale);
+            color: var(--green-primary);
+            transform: translateY(-2px);
+        }
+        .quick-response {
+            margin-top: 2rem;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, var(--green-pale), var(--bg-secondary));
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--green-primary);
+        }
+        .quick-response h4 {
+            font-size: 0.9rem;
+            color: var(--green-primary);
+            margin-bottom: 0.5rem;
+        }
+        .quick-response p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .contact-left, .contact-right {
+                padding: 0.5rem;
+            }
+            .form-card {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo"><span class="logo-mark">🥗</span> THE SALAD BAR COMPANY</a>
+            <a href="index.html" class="logo">
+                <span class="logo-mark">🥗</span> THE SALAD BAR COMPANY
+            </a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
@@ -40,117 +131,214 @@
                 <span></span>
             </button>
         </div>
+        <!-- Mobile Menu -->
         <div class="mobile-menu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="work.html">Work</a>
             <a href="services.html">Services</a>
-            <a href="contact.html">Contact</a>
-            <a href="contact.html" class="btn" style="margin-top:1rem;">Start a Project</a>
-        </div>
+            <a href="contact.html" class="active">Contact</a>
         </div>
     </nav>
 
-    <section class="page-header">
+    <div class="page-header">
         <div class="container">
-            <span class="badge">Get In Touch</span>
-            <h1>Let's <span class="text-gradient">Build</span></h1>
-            <p>Have a project in mind? We'd love to hear about it.</p>
+            <span class="badge fade-in">Get In Touch</span>
+            <h1 class="fade-in">Let's Create Together</h1>
+            <p class="fade-in">We'd love to hear about your project. Reach out and let's start a conversation.</p>
         </div>
-    </section>
+    </div>
 
-    <section class="container section">
+    <section class="container contact-section">
         <div class="contact-layout">
-            <div class="contact-info">
-                <h3>Reach Out</h3>
-                <p style="color:var(--text-muted); margin-bottom:1.5rem;">For new business inquiries, partnerships, or just to say hello:</p>
-                
-                <a href="mailto:hello@thesaladbarcompany.com" class="contact-email">hello@thesaladbarcompany.com</a>
+            <!-- Left Side - Info -->
+            <div class="contact-left fade-up">
+                <h3 style="margin-bottom:1rem;">Reach Out</h3>
+                <a href="mailto:hello@saladbarcompany.com" class="contact-email">hello@saladbarcompany.com</a>
                 
                 <div class="contact-detail">
                     <h4>Location</h4>
                     <p>Based in Los Angeles, serving globally.</p>
                 </div>
-
+                
                 <div class="contact-detail">
                     <h4>Office Hours</h4>
-                    <p>Monday – Friday<br>9:00 AM – 6:00 PM PT</p>
+                    <p>Monday – Friday, 9am – 6pm PST</p>
                 </div>
-
+                
                 <div class="contact-detail">
                     <h4>Follow Us</h4>
-                    <div style="display:flex; gap:0.75rem; margin-top:0.5rem;">
-                        <a href="#" class="btn btn-outline btn-small">Instagram</a>
-                        <a href="#" class="btn btn-outline btn-small">LinkedIn</a>
-                        <a href="#" class="btn btn-outline btn-small">Twitter</a>
+                    <div style="margin-top:0.5rem;">
+                        <a href="#" class="social-link">📷 Instagram</a>
+                        <a href="#" class="social-link">💼 LinkedIn</a>
+                        <a href="#" class="social-link">🐦 Twitter</a>
                     </div>
                 </div>
-
-                <div style="margin-top:2rem; padding:1.5rem; background:var(--green-pale); border-radius:var(--radius-md);">
-                    <h4 style="font-size:1rem; margin-bottom:0.5rem; color:var(--green-primary);">🥗 Quick Response</h4>
-                    <p style="font-size:0.9rem; color:var(--text-secondary);">We typically respond to inquiries within 24 hours. For urgent matters, please indicate so in your message.</p>
+                
+                <div class="quick-response">
+                    <h4>⚡ Quick Response</h4>
+                    <p>We typically respond within 24 hours. For urgent inquiries, include "URGENT" in your subject line.</p>
                 </div>
             </div>
             
-            <form style="background:var(--card-bg); padding:2.5rem; border-radius:var(--radius-lg); border:1px solid var(--border); box-shadow:0 4px 20px rgba(0,0,0,0.03);">
-                <div class="form-group">
-                    <label>Your Name</label>
-                    <input type="text" class="form-control" placeholder="Jane Doe">
+            <!-- Right Side - Form -->
+            <div class="contact-right fade-up">
+                <div class="form-card">
+                    <div class="step-indicator">
+                        <div class="step-dot active" id="dot1"></div>
+                        <div class="step-dot" id="dot2"></div>
+                    </div>
+                    
+                    <form id="contactForm">
+                        <!-- Step 1: Name & Email -->
+                        <div class="form-step active" id="step1">
+                            <h3 style="margin-bottom:1.5rem; font-size:1.25rem;">Tell us about yourself</h3>
+                            <div class="form-group">
+                                <label>Your Name *</label>
+                                <input type="text" class="form-control" id="name" required placeholder="Full name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" class="form-control" id="email" required placeholder="you@company.com">
+                            </div>
+                            <button type="button" class="btn" onclick="nextStep()" style="width:100%; margin-top:1rem;">Next →</button>
+                        </div>
+                        
+                        <!-- Step 2: Details -->
+                        <div class="form-step" id="step2">
+                            <h3 style="margin-bottom:1.5rem; font-size:1.25rem;">Tell us about your project</h3>
+                            <div class="form-group">
+                                <label>Company / Organization</label>
+                                <input type="text" class="form-control" id="company" placeholder="Your company name">
+                            </div>
+                            <div class="form-group">
+                                <label>What service are you interested in?</label>
+                                <select class="form-control" id="service">
+                                    <option value="">Select a service</option>
+                                    <option>Brand Strategy</option>
+                                    <option>Filmmaking</option>
+                                    <option>Documentary Making</option>
+                                    <option>Photography</option>
+                                    <option>Videography</option>
+                                    <option>Social Media & Content</option>
+                                    <option>Creative Writing</option>
+                                    <option>Copywriting</option>
+                                    <option>Business Operations</option>
+                                    <option>Event Production</option>
+                                    <option>App Development</option>
+                                    <option>AI Consulting</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Project Details</label>
+                                <textarea class="form-control" id="message" rows="4" placeholder="Brief description of your project..."></textarea>
+                            </div>
+                            <div style="display:flex; gap:1rem;">
+                                <button type="button" class="btn btn-outline" onclick="prevStep()" style="flex:1;">← Back</button>
+                                <button type="submit" class="btn" style="flex:2;">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" placeholder="jane@company.com">
-                </div>
-                <div class="form-group">
-                    <label>Company (Optional)</label>
-                    <input type="text" class="form-control" placeholder="Your Company">
-                </div>
-                <div class="form-group">
-                    <label>What do you need?</label>
-                    <select class="form-control">
-                        <option>Brand Strategy</option>
-                        <option>Filmmaking / Video Production</option>
-                        <option>Photography / Videography</option>
-                        <option>Documentary Making</option>
-                        <option>Social Media & Content</option>
-                        <option>Creative Writing / Copywriting</option>
-                        <option>Business Operations</option>
-                        <option>Creative Consulting</option>
-                        <option>Event Production / Planning</option>
-                        <option>Podcast Production</option>
-                        <option>App Development</option>
-                        <option>AI Consulting</option>
-                        <option>Process Management</option>
-                        <option>Motion Graphics & Animation</option>
-                        <option>Something Else</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Budget Range</label>
-                    <select class="form-control">
-                        <option>$5,000 - $15,000</option>
-                        <option>$15,000 - $50,000</option>
-                        <option>$50,000 - $100,000</option>
-                        <option>$100,000+</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Tell us about your project</label>
-                    <textarea class="form-control" rows="4" placeholder="What are your goals? What's the timeline?"></textarea>
-                </div>
-                <button type="submit" class="btn" style="width:100%;">Send Message</button>
-            </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Let's build something incredible</h2>
+            <p>Your next great project starts with a conversation.</p>
+            <a href="mailto:hello@saladbarcompany.com" class="btn btn-white">Email Us Directly</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="logo"><span class="logo-mark">🥗</span> THE SALAD BAR COMPANY</div>
-                <p style="color:var(--text-muted); font-size:0.75rem;">© 2025 The Salad Bar Company LLC. All rights reserved.</p>
+                <div>
+                    <div class="logo" style="margin-bottom:1rem;"><span class="logo-mark">🥗</span> THE SALAD BAR COMPANY</div>
+                    <p style="color:var(--text-muted); max-width:300px; font-size:0.9rem;">Fresh ideas, premium execution. Based in the culture, built for impact.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Twitter</a>
+                </div>
             </div>
+            <p style="color:var(--text-muted); font-size:0.75rem; margin-top:3rem;">© 2025 The Salad Bar Company LLC. All rights reserved.</p>
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            gsap.registerPlugin(ScrollTrigger);
+            
+            gsap.to('.fade-in', { 
+                opacity: 1, 
+                y: 0, 
+                duration: 0.8, 
+                stagger: 0.15, 
+                ease: 'power3.out',
+                delay: 0.2
+            });
+            
+            gsap.utils.toArray('.fade-up').forEach(el => {
+                gsap.to(el, {
+                    scrollTrigger: { trigger: el, start: 'top 85%' },
+                    opacity: 1,
+                    y: 0, 
+                    duration: 0.6, 
+                    ease: 'power2.out'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.querySelector('.mobile-menu');
+            const btn = document.querySelector('.mobile-menu-btn');
+            menu.classList.toggle('open');
+            btn.classList.toggle('open');
+        }
+        
+        // Multi-step form
+        function nextStep() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            if (!name || !email) {
+                alert('Please fill in your name and email.');
+                return;
+            }
+            
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step2').classList.add('active');
+            document.getElementById('dot1').classList.remove('active');
+            document.getElementById('dot1').classList.add('completed');
+            document.getElementById('dot2').classList.add('active');
+            
+            // Re-add active styling to completed dot
+            document.getElementById('dot1').style.background = 'var(--green-bright)';
+        }
+        
+        function prevStep() {
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('dot2').classList.remove('active');
+            document.getElementById('dot1').classList.add('active');
+            document.getElementById('dot1').style.background = 'var(--green-primary)';
+        }
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thanks for reaching out! We\'ll be in touch soon.');
+            this.reset();
+            prevStep();
+        });
+    </script>
 </body>
 </html>

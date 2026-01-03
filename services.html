@@ -6,21 +6,78 @@
     <title>Services | The Salad Bar Company</title>
     
     <!-- Open Graph / Social Share -->
-    <meta property="og:title" content="Services | The Salad Bar Company">
-    <meta property="og:description" content="From strategy to execution, we offer a full menu of creative services.">
+    <meta property="og:title" content="Our Services | The Salad Bar Company">
+    <meta property="og:description" content="A full menu of creative services - from brand strategy to production to digital innovation.">
     <meta property="og:image" content="https://jgerms20.github.io/salad-bar-website/Images/team%20Headshots/Joshua%20German.jpg">
+    <meta property="og:url" content="https://jgerms20.github.io/salad-bar-website/services.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&family=Space+Mono:wght@400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .fade-up { opacity: 0; }
+        .fade-in, .fade-up { opacity: 0; }
+        
+        /* Services Page Specific */
+        .services-full {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .services-hidden {
+            display: none;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .services-hidden.show {
+            display: flex;
+        }
+        
+        /* Capabilities Grid */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .capability-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        .capability-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(45, 90, 39, 0.1);
+            border-color: var(--green-bright);
+        }
+        .capability-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .capability-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .capability-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .capabilities-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo"><span class="logo-mark">🥗</span> THE SALAD BAR COMPANY</a>
+            <a href="index.html" class="logo">
+                <span class="logo-mark">🥗</span> THE SALAD BAR COMPANY
+            </a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
@@ -35,314 +92,350 @@
                 <span></span>
             </button>
         </div>
+        <!-- Mobile Menu -->
         <div class="mobile-menu">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="work.html">Work</a>
             <a href="services.html" class="active">Services</a>
             <a href="contact.html">Contact</a>
-            <a href="contact.html" class="btn">Start a Project</a>
         </div>
     </nav>
 
-    <section class="page-header">
+    <div class="page-header">
         <div class="container">
-            <span class="badge">Capabilities</span>
-            <h1>What We Bring <span class="text-gradient">to the Table</span></h1>
-            <p>We offer a full menu of creative services. Tap any service to expand.</p>
+            <span class="badge fade-in">What We Do</span>
+            <h1 class="fade-in">Our Services</h1>
+            <p class="fade-in">We offer a full menu of creative services tailored to elevate your brand.</p>
         </div>
-    </section>
+    </div>
 
     <section class="container section">
-        <!-- First 10 services (always visible) -->
-        <div class="services-accordion" id="servicesMain">
-            
-            <div class="accordion-item active" data-index="0">
+        <!-- First 10 Services - Always Visible -->
+        <div class="services-full">
+            <div class="accordion-item active fade-up">
                 <div class="accordion-header">
                     <span class="accordion-num">01</span>
                     <h3>Brand Strategy</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Market positioning, audience research, competitive analysis, and brand identity development. We find the "why" before we build the "what".</p>
+                    <p>Deep market research, competitive analysis, audience insights, and strategic positioning. We define who you are, who you're for, and how you win.</p>
                 </div>
             </div>
-
-            <div class="accordion-item" data-index="1">
+            <div class="accordion-item fade-up">
                 <div class="accordion-header">
                     <span class="accordion-num">02</span>
                     <h3>Filmmaking</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>End-to-end film production from concept to delivery. Commercials, narrative films, branded content, and music videos.</p>
+                    <p>End-to-end film production from concept development through post-production. Commercials, narrative films, branded entertainment, and music videos.</p>
                 </div>
             </div>
-
-            <div class="accordion-item" data-index="2">
+            <div class="accordion-item fade-up">
                 <div class="accordion-header">
                     <span class="accordion-num">03</span>
                     <h3>Documentary Making</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Authentic storytelling that captures real moments and real people. We create compelling documentaries for brands and causes.</p>
+                    <p>Authentic storytelling that captures real moments and human connection. Brand documentaries, cause-driven content, and cultural narratives.</p>
                 </div>
             </div>
-
-            <div class="accordion-item" data-index="3">
+            <div class="accordion-item fade-up">
                 <div class="accordion-header">
                     <span class="accordion-num">04</span>
                     <h3>Photography</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Campaign photography, product shoots, portraits, lifestyle content, and event coverage. High-quality imagery for all touchpoints.</p>
+                    <p>Campaign photography, product shoots, portraits, lifestyle content, and event coverage. High-quality imagery that tells your story across all touchpoints.</p>
                 </div>
             </div>
-
-            <div class="accordion-item" data-index="4">
+            <div class="accordion-item fade-up">
                 <div class="accordion-header">
                     <span class="accordion-num">05</span>
                     <h3>Videography</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Event videography, interviews, branded content, promotional videos, and social content. Fast turnaround without sacrificing quality.</p>
+                    <p>Event videography, interviews, testimonials, social content, and behind-the-scenes. Fast turnaround without compromising quality.</p>
                 </div>
             </div>
-
-            <div class="accordion-item" data-index="5">
+            <div class="accordion-item fade-up">
                 <div class="accordion-header">
                     <span class="accordion-num">06</span>
                     <h3>Social Media & Content</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Content calendars, community management, influencer partnerships, and paid media strategy. We build engaged audiences.</p>
+                    <p>Full-service social management including content calendars, community engagement, influencer partnerships, and paid media strategy.</p>
                 </div>
             </div>
-
-            <div class="accordion-item" data-index="6">
+            <div class="accordion-item fade-up">
                 <div class="accordion-header">
                     <span class="accordion-num">07</span>
                     <h3>Creative Writing</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Brand voice development, content writing, and narrative development. Words that connect, persuade, and inspire action.</p>
+                    <p>Brand voice development, long-form content, articles, manifestos, and narrative development. Words that inspire and move people to action.</p>
                 </div>
             </div>
-
-            <div class="accordion-item" data-index="7">
+            <div class="accordion-item fade-up">
                 <div class="accordion-header">
                     <span class="accordion-num">08</span>
                     <h3>Copywriting</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Taglines, headlines, advertising copy, email campaigns, and marketing materials. Sharp, compelling copy that converts.</p>
+                    <p>Taglines, headlines, ad copy, marketing materials, and web content. Sharp, persuasive copy that captures attention and converts.</p>
                 </div>
             </div>
-
-            <div class="accordion-item" data-index="8">
+            <div class="accordion-item fade-up">
                 <div class="accordion-header">
                     <span class="accordion-num">09</span>
                     <h3>Business Operations</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Workflow optimization, project management, operational efficiency consulting, and process design for creative teams.</p>
+                    <p>Workflow optimization, project management systems, operational efficiency, and team structure consulting for creative organizations.</p>
                 </div>
             </div>
-
-            <div class="accordion-item" data-index="9">
+            <div class="accordion-item fade-up">
                 <div class="accordion-header">
                     <span class="accordion-num">10</span>
                     <h3>Event Production</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Experiential activations, live events, brand experiences, and launch parties. We create memorable moments that build community.</p>
+                    <p>Experiential activations, live events, pop-ups, and brand experiences. We create memorable moments that build community and drive conversation.</p>
                 </div>
             </div>
-
         </div>
-
-        <!-- See More Button -->
-        <div class="see-more-btn" id="seeMoreBtn">
-            <button class="btn btn-outline" onclick="toggleMoreServices()">
-                <span id="seeMoreText">See 10 More Services ↓</span>
-            </button>
-        </div>
-
-        <!-- Hidden services (11-20) -->
+        
+        <!-- Remaining 10 Services - Toggleable -->
         <div class="services-hidden" id="servicesHidden">
-            
-            <div class="accordion-item" data-index="10">
+            <div class="accordion-item fade-up">
                 <div class="accordion-header">
                     <span class="accordion-num">11</span>
-                    <h3>Podcast Production</h3>
-                </div>
-                <div class="accordion-content">
-                    <p>Concept development, recording, editing, mixing, and distribution strategy. Launch a podcast that establishes thought leadership.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item" data-index="11">
-                <div class="accordion-header">
-                    <span class="accordion-num">12</span>
-                    <h3>Influencer Marketing</h3>
-                </div>
-                <div class="accordion-content">
-                    <p>Talent identification, outreach, contract negotiation, and campaign management. We connect brands with the right voices.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item" data-index="12">
-                <div class="accordion-header">
-                    <span class="accordion-num">13</span>
-                    <h3>Creative Consulting</h3>
-                </div>
-                <div class="accordion-content">
-                    <p>We embed with your team to optimize creative workflows and provide executive-level direction on campaigns and strategy.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item" data-index="13">
-                <div class="accordion-header">
-                    <span class="accordion-num">14</span>
-                    <h3>Web & Digital Design</h3>
-                </div>
-                <div class="accordion-content">
-                    <p>Website design, landing pages, and digital experiences that convert visitors into customers. Modern and responsive.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item" data-index="14">
-                <div class="accordion-header">
-                    <span class="accordion-num">15</span>
-                    <h3>App Development</h3>
-                </div>
-                <div class="accordion-content">
-                    <p>Mobile and web application development from concept to launch. We build intuitive, scalable apps that solve real problems.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item" data-index="15">
-                <div class="accordion-header">
-                    <span class="accordion-num">16</span>
-                    <h3>AI Consulting</h3>
-                </div>
-                <div class="accordion-content">
-                    <p>AI integration strategy, workflow automation, and creative AI implementation. Leverage AI tools to work smarter.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item" data-index="16">
-                <div class="accordion-header">
-                    <span class="accordion-num">17</span>
-                    <h3>Process Management</h3>
-                </div>
-                <div class="accordion-content">
-                    <p>End-to-end project oversight, timeline management, vendor coordination, and quality assurance for complex projects.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item" data-index="17">
-                <div class="accordion-header">
-                    <span class="accordion-num">18</span>
                     <h3>Event Planning</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Concept development, venue sourcing, vendor management, and logistics coordination. From intimate gatherings to large activations.</p>
+                    <p>Strategic event planning from concept through execution. Venue selection, vendor coordination, logistics, and on-site management.</p>
                 </div>
             </div>
-
-            <div class="accordion-item" data-index="18">
+            <div class="accordion-item fade-up">
                 <div class="accordion-header">
-                    <span class="accordion-num">19</span>
+                    <span class="accordion-num">12</span>
+                    <h3>App Development</h3>
+                </div>
+                <div class="accordion-content">
+                    <p>Mobile and web application development. From MVP prototypes to full-scale products, we build digital experiences that users love.</p>
+                </div>
+            </div>
+            <div class="accordion-item fade-up">
+                <div class="accordion-header">
+                    <span class="accordion-num">13</span>
+                    <h3>AI Consulting</h3>
+                </div>
+                <div class="accordion-content">
+                    <p>Strategic guidance on AI integration for creative workflows. Prompt engineering, automation systems, and future-proofing your operations.</p>
+                </div>
+            </div>
+            <div class="accordion-item fade-up">
+                <div class="accordion-header">
+                    <span class="accordion-num">14</span>
+                    <h3>Process Management</h3>
+                </div>
+                <div class="accordion-content">
+                    <p>End-to-end process design and optimization. We streamline your operations so your team can focus on what they do best.</p>
+                </div>
+            </div>
+            <div class="accordion-item fade-up">
+                <div class="accordion-header">
+                    <span class="accordion-num">15</span>
                     <h3>Motion Graphics & Animation</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>2D/3D animation, motion design, explainer videos, and animated brand assets. Dynamic visual storytelling.</p>
+                    <p>2D and 3D motion design, animated explainers, logo animations, and dynamic visual content that captures attention.</p>
                 </div>
             </div>
-
-            <div class="accordion-item" data-index="19">
+            <div class="accordion-item fade-up">
                 <div class="accordion-header">
-                    <span class="accordion-num">20</span>
+                    <span class="accordion-num">16</span>
                     <h3>Talent Management</h3>
                 </div>
                 <div class="accordion-content">
-                    <p>Creator partnerships, talent booking, contract negotiation, and relationship management. The right voices for your brand.</p>
+                    <p>Creator partnerships, influencer management, and talent booking. We connect brands with the right voices and faces.</p>
                 </div>
             </div>
-
+            <div class="accordion-item fade-up">
+                <div class="accordion-header">
+                    <span class="accordion-num">17</span>
+                    <h3>Brand Identity Design</h3>
+                </div>
+                <div class="accordion-content">
+                    <p>Logo design, visual systems, color palettes, typography, and comprehensive brand guidelines that ensure consistency everywhere.</p>
+                </div>
+            </div>
+            <div class="accordion-item fade-up">
+                <div class="accordion-header">
+                    <span class="accordion-num">18</span>
+                    <h3>Digital Marketing</h3>
+                </div>
+                <div class="accordion-content">
+                    <p>Paid social, search marketing, email campaigns, and performance optimization. Data-driven strategies that deliver results.</p>
+                </div>
+            </div>
+            <div class="accordion-item fade-up">
+                <div class="accordion-header">
+                    <span class="accordion-num">19</span>
+                    <h3>Podcast Production</h3>
+                </div>
+                <div class="accordion-content">
+                    <p>Full podcast production from concept to distribution. Recording, editing, show development, and growth strategy.</p>
+                </div>
+            </div>
+            <div class="accordion-item fade-up">
+                <div class="accordion-header">
+                    <span class="accordion-num">20</span>
+                    <h3>Music Supervision</h3>
+                </div>
+                <div class="accordion-content">
+                    <p>Music licensing, original compositions, and sonic branding. We find the perfect soundtrack for your content.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align:center; margin-top:2rem;">
+            <button id="toggleServicesBtn" class="btn btn-outline">See 10 More Services ↓</button>
         </div>
     </section>
 
+    <!-- What We Bring to the Table -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header" style="text-align:center;">
+                <span class="badge">Capabilities</span>
+                <h2 class="section-title">What We Bring to the Table</h2>
+            </div>
+            
+            <div class="capabilities-grid">
+                <div class="capability-card fade-up">
+                    <div class="capability-icon">🎯</div>
+                    <h3>Strategy</h3>
+                    <p>Research-backed insights and strategic positioning that drive results.</p>
+                </div>
+                <div class="capability-card fade-up">
+                    <div class="capability-icon">🎨</div>
+                    <h3>Creative</h3>
+                    <p>Bold ideas and beautiful execution across every medium.</p>
+                </div>
+                <div class="capability-card fade-up">
+                    <div class="capability-icon">🎬</div>
+                    <h3>Production</h3>
+                    <p>Premium video, photo, and audio content at any scale.</p>
+                </div>
+                <div class="capability-card fade-up">
+                    <div class="capability-icon">📱</div>
+                    <h3>Digital</h3>
+                    <p>Websites, apps, and digital experiences that engage.</p>
+                </div>
+                <div class="capability-card fade-up">
+                    <div class="capability-icon">📣</div>
+                    <h3>Marketing</h3>
+                    <p>Campaigns that reach the right people at the right time.</p>
+                </div>
+                <div class="capability-card fade-up">
+                    <div class="capability-icon">🤝</div>
+                    <h3>Consulting</h3>
+                    <p>Expert guidance to transform your creative operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
     <section class="cta-section">
         <div class="container">
-            <h2>Ready to mix something great?</h2>
-            <p>Every project starts with a conversation. Tell us about your goals.</p>
-            <a href="contact.html" class="btn btn-white">Get In Touch</a>
+            <h2>Let's cook something together</h2>
+            <p>Have a project in mind? We'd love to hear about it.</p>
+            <a href="contact.html" class="btn btn-white">Start a Project</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="logo"><span class="logo-mark">🥗</span> THE SALAD BAR COMPANY</div>
-                <p style="color:var(--text-muted); font-size:0.75rem;">© 2025 The Salad Bar Company LLC. All rights reserved.</p>
+                <div>
+                    <div class="logo" style="margin-bottom:1rem;"><span class="logo-mark">🥗</span> THE SALAD BAR COMPANY</div>
+                    <p style="color:var(--text-muted); max-width:300px; font-size:0.9rem;">Fresh ideas, premium execution. Based in the culture, built for impact.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Twitter</a>
+                </div>
             </div>
+            <p style="color:var(--text-muted); font-size:0.75rem; margin-top:3rem;">© 2025 The Salad Bar Company LLC. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
-        let servicesExpanded = false;
-        
-        function toggleMoreServices() {
-            const hidden = document.getElementById('servicesHidden');
-            const btnText = document.getElementById('seeMoreText');
-            servicesExpanded = !servicesExpanded;
-            
-            if (servicesExpanded) {
-                hidden.classList.add('show');
-                btnText.textContent = 'Show Less ↑';
-                setupAccordion();
-                gsap.from('#servicesHidden .accordion-item', {
-                    opacity: 0,
-                    y: 20,
-                    duration: 0.4,
-                    stagger: 0.05,
-                    ease: 'power2.out'
-                });
-            } else {
-                hidden.classList.remove('show');
-                btnText.textContent = 'See 10 More Services ↓';
-                window.scrollTo({ top: document.getElementById('servicesMain').offsetTop - 100, behavior: 'smooth' });
-            }
-        }
-        
-        function setupAccordion() {
-            const items = document.querySelectorAll('.accordion-item');
-            items.forEach(item => {
-                item.onclick = function() {
-                    items.forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
-                };
-            });
-        }
-
         window.addEventListener('load', function() {
             gsap.registerPlugin(ScrollTrigger);
-            setupAccordion();
-
-            gsap.utils.toArray('#servicesMain .accordion-item').forEach((el, i) => {
+            
+            gsap.to('.fade-in', { 
+                opacity: 1, 
+                y: 0, 
+                duration: 0.8, 
+                stagger: 0.15, 
+                ease: 'power3.out',
+                delay: 0.2
+            });
+            
+            gsap.utils.toArray('.fade-up').forEach(el => {
                 gsap.to(el, {
-                    scrollTrigger: { trigger: el, start: 'top 88%' },
+                    scrollTrigger: { trigger: el, start: 'top 90%' },
                     opacity: 1,
                     y: 0, 
-                    duration: 0.4, 
-                    delay: i * 0.03, 
+                    duration: 0.5, 
                     ease: 'power2.out'
                 });
+            });
+
+            // Accordion functionality
+            const items = document.querySelectorAll('.accordion-item');
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    items.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                });
+            });
+            
+            // Toggle Services Button
+            const toggleBtn = document.getElementById('toggleServicesBtn');
+            const hiddenServices = document.getElementById('servicesHidden');
+            let isExpanded = false;
+            
+            toggleBtn.addEventListener('click', () => {
+                isExpanded = !isExpanded;
+                if (isExpanded) {
+                    hiddenServices.classList.add('show');
+                    toggleBtn.innerHTML = 'Show Less ↑';
+                    
+                    // Animate the newly visible items
+                    gsap.utils.toArray('#servicesHidden .accordion-item').forEach((el, i) => {
+                        gsap.fromTo(el, 
+                            { opacity: 0, y: 30 }, 
+                            { opacity: 1, y: 0, duration: 0.4, delay: i * 0.05, ease: 'power2.out' }
+                        );
+                    });
+                } else {
+                    hiddenServices.classList.remove('show');
+                    toggleBtn.innerHTML = 'See 10 More Services ↓';
+                    
+                    // Scroll back to top of services
+                    window.scrollTo({ top: 400, behavior: 'smooth' });
+                }
             });
         });
 
+        // Mobile menu toggle
         function toggleMobileMenu() {
             const menu = document.querySelector('.mobile-menu');
             const btn = document.querySelector('.mobile-menu-btn');
