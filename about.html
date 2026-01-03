@@ -211,101 +211,7 @@
             </div>
             
             <div class="partners-diamond" id="partnersGrid">
-                <div class="partner-position top fade-up">
-                    <div class="partner-card" onclick="this.classList.toggle('flipped')">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <img src="Images/team Headshots/Joshua German.jpg" alt="Joshua German" onerror="this.src='https://via.placeholder.com/300x200/2D5A27/FFFFFF?text=Joshua'">
-                                <div class="info">
-                                    <h3>Joshua German</h3>
-                                    <div class="role">Head of Strategy</div>
-                                    <div class="hometown">Columbia, SC</div>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>Joshua German</h3>
-                                <p>Strategist by training, creative by nature. Joshua brings a decade of brand strategy experience from top agencies.</p>
-                                <div class="interests">
-                                    <span>Travel</span>
-                                    <span>Music</span>
-                                    <span>Film</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="partner-position right fade-up">
-                    <div class="partner-card" onclick="this.classList.toggle('flipped')">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <img src="Images/team Headshots/Janel Moore.JPG" alt="Janel Moore" onerror="this.src='https://via.placeholder.com/300x200/2D5A27/FFFFFF?text=Janel'">
-                                <div class="info">
-                                    <h3>Janel Moore</h3>
-                                    <div class="role">Head of Business Operations</div>
-                                    <div class="hometown">Macon, GA</div>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>Janel Moore</h3>
-                                <p>The engine behind our operations. Janel ensures every project runs smoothly from kickoff to delivery.</p>
-                                <div class="interests">
-                                    <span>Finance</span>
-                                    <span>Wellness</span>
-                                    <span>Community</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="partner-position bottom fade-up">
-                    <div class="partner-card" onclick="this.classList.toggle('flipped')">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <img src="Images/team Headshots/Tarahgee Morris.jpeg" alt="Tarahgee Morris" onerror="this.src='https://via.placeholder.com/300x200/2D5A27/FFFFFF?text=Tarahgee'">
-                                <div class="info">
-                                    <h3>Tarahgee Morris</h3>
-                                    <div class="role">Head of Social & Content</div>
-                                    <div class="hometown">Jersey City, NJ</div>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>Tarahgee Morris</h3>
-                                <p>Culture curator and content mastermind. Tarahgee knows what resonates and how to make it happen.</p>
-                                <div class="interests">
-                                    <span>Fashion</span>
-                                    <span>Art</span>
-                                    <span>Social Media</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="partner-position left fade-up">
-                    <div class="partner-card" onclick="this.classList.toggle('flipped')">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <img src="Images/team Headshots/Corey Lightner.JPG" alt="Corey Lightner" onerror="this.src='https://via.placeholder.com/300x200/2D5A27/FFFFFF?text=Corey'">
-                                <div class="info">
-                                    <h3>Corey Lightner</h3>
-                                    <div class="role">Head of Production</div>
-                                    <div class="hometown">Virginia Beach, VA</div>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <h3>Corey Lightner</h3>
-                                <p>Production powerhouse. Corey brings ideas to life with technical excellence and creative vision.</p>
-                                <div class="interests">
-                                    <span>Film</span>
-                                    <span>Sports</span>
-                                    <span>Tech</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Partners will be randomized by JavaScript -->
             </div>
         </div>
     </section>
@@ -348,7 +254,97 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
+        // Partner data
+        const partners = [
+            {
+                name: "Joshua German",
+                role: "Head of Strategy",
+                hometown: "Columbia, SC",
+                image: "Images/team Headshots/Joshua German.jpg",
+                bio: "Strategist by training, creative by nature. Joshua brings a decade of brand strategy experience from top agencies.",
+                interests: ["Travel", "Music", "Film"]
+            },
+            {
+                name: "Janel Moore",
+                role: "Head of Business Operations",
+                hometown: "Macon, GA",
+                image: "Images/team Headshots/Janel Moore.JPG",
+                bio: "The engine behind our operations. Janel ensures every project runs smoothly from kickoff to delivery.",
+                interests: ["Finance", "Wellness", "Community"]
+            },
+            {
+                name: "Tarahgee Morris",
+                role: "Head of Social & Content",
+                hometown: "Jersey City, NJ",
+                image: "Images/team Headshots/Tarahgee Morris.jpeg",
+                bio: "Culture curator and content mastermind. Tarahgee knows what resonates and how to make it happen.",
+                interests: ["Fashion", "Art", "Social Media"]
+            },
+            {
+                name: "Corey Lightner",
+                role: "Head of Production",
+                hometown: "Virginia Beach, VA",
+                image: "Images/team Headshots/Corey Lightner.JPG",
+                bio: "Production powerhouse. Corey brings ideas to life with technical excellence and creative vision.",
+                interests: ["Film", "Sports", "Tech"]
+            }
+        ];
+
+        // Shuffle array (Fisher-Yates algorithm)
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        // Position classes for diamond layout
+        const positions = ['top', 'right', 'bottom', 'left'];
+
+        // Generate partner card HTML
+        function createPartnerCard(partner, position) {
+            return `
+                <div class="partner-position ${position} fade-up">
+                    <div class="partner-card" onclick="this.classList.toggle('flipped')">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="${partner.image}" alt="${partner.name}" onerror="this.src='https://via.placeholder.com/300x200/2D5A27/FFFFFF?text=${partner.name.split(' ')[0]}'">
+                                <div class="info">
+                                    <h3>${partner.name}</h3>
+                                    <div class="role">${partner.role}</div>
+                                    <div class="hometown">${partner.hometown}</div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>${partner.name}</h3>
+                                <p>${partner.bio}</p>
+                                <div class="interests">
+                                    ${partner.interests.map(i => `<span>${i}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render partners in random order
+        function renderPartners() {
+            const grid = document.getElementById('partnersGrid');
+            const shuffledPartners = shuffleArray(partners);
+            
+            grid.innerHTML = shuffledPartners.map((partner, index) => 
+                createPartnerCard(partner, positions[index])
+            ).join('');
+        }
+
+        // Initialize
         window.addEventListener('load', function() {
+            // Render randomized partners
+            renderPartners();
+            
             gsap.registerPlugin(ScrollTrigger);
             
             gsap.to('.fade-in', { 
@@ -360,15 +356,18 @@
                 delay: 0.2
             });
             
-            gsap.utils.toArray('.fade-up').forEach(el => {
-                gsap.to(el, {
-                    scrollTrigger: { trigger: el, start: 'top 85%' },
-                    opacity: 1,
-                    y: 0, 
-                    duration: 0.6, 
-                    ease: 'power2.out'
+            // Re-run fade-up after partners are rendered
+            setTimeout(() => {
+                gsap.utils.toArray('.fade-up').forEach(el => {
+                    gsap.to(el, {
+                        scrollTrigger: { trigger: el, start: 'top 85%' },
+                        opacity: 1,
+                        y: 0, 
+                        duration: 0.6, 
+                        ease: 'power2.out'
+                    });
                 });
-            });
+            }, 100);
         });
 
         // Mobile menu toggle

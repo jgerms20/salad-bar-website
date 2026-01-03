@@ -506,63 +506,88 @@ footer {
 /* --- Animation Prep --- */
 .fade-up { transform: translateY(30px); }
 
-/* --- Mobile Nav --- */
+/* ===================================
+   MOBILE HAMBURGER MENU - FIXED
+   =================================== */
+
 .mobile-menu-btn {
-    display: none !important;
-    background: none;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0.75rem;
+    padding: 8px;
     z-index: 200;
     border-radius: var(--radius-sm);
     transition: background 0.3s ease;
 }
-.mobile-menu-btn:hover { background: var(--green-pale); }
+.mobile-menu-btn:hover { 
+    background: var(--green-pale); 
+}
+
+/* Hamburger lines */
 .mobile-menu-btn span {
     display: block;
     width: 24px;
-    height: 2px;
+    height: 3px;
     background: var(--green-primary);
-    margin: 6px 0;
-    transition: 0.3s;
+    border-radius: 2px;
+    transition: all 0.3s ease;
 }
+.mobile-menu-btn span:nth-child(1) { margin-bottom: 5px; }
+.mobile-menu-btn span:nth-child(2) { margin-bottom: 5px; }
+.mobile-menu-btn span:nth-child(3) { margin-bottom: 0; }
+
+/* X animation when open */
 .mobile-menu-btn.open span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 6px);
+    transform: rotate(45deg) translate(6px, 6px);
 }
 .mobile-menu-btn.open span:nth-child(2) {
     opacity: 0;
+    transform: translateX(-10px);
 }
 .mobile-menu-btn.open span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -6px);
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
+/* Mobile dropdown menu */
 .mobile-menu {
-    display: none !important;
+    display: none;
     position: fixed;
-    top: 70px;
+    top: 60px;
     left: 0;
     right: 0;
-    bottom: 0;
     background: var(--bg-primary);
-    padding: 2rem 1.5rem;
+    padding: 1.5rem;
     flex-direction: column;
     gap: 0;
     z-index: 150;
-    overflow-y: auto;
+    border-bottom: 2px solid var(--green-primary);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
 }
 .mobile-menu.open {
     display: flex !important;
 }
 .mobile-menu a {
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-size: 1.1rem;
+    font-weight: 600;
     color: var(--text-secondary);
-    padding: 1.25rem 0;
+    padding: 1rem 0;
     border-bottom: 1px solid var(--border);
     transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.mobile-menu a:last-child {
+    border-bottom: none;
 }
 .mobile-menu a:hover, .mobile-menu a.active {
     color: var(--green-primary);
+    padding-left: 0.5rem;
 }
 
 /* ===============================
