@@ -12,7 +12,7 @@
     <style>
         .fade-up { opacity: 0; }
         
-        /* Diamond/Circle Layout for Partners - BIGGER */
+        /* Circular Orbit Layout for Partners */
         .partners-diamond {
             position: relative;
             width: 100%;
@@ -20,34 +20,71 @@
             height: 850px;
             margin: 0 auto;
         }
+        
+        /* Orbit container - rotates all cards together */
         .partner-card {
             position: absolute;
             width: 280px;
             perspective: 1000px;
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+            animation: orbit 20s linear infinite;
         }
-        /* Top */
+        
+        /* Each card starts at a different angle (90 degrees apart) and maintains upright orientation */
         .partner-card:nth-child(1) {
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%) rotate(0deg) translateX(285px) rotate(0deg);
+            animation-name: orbit1;
         }
-        /* Right */
         .partner-card:nth-child(2) {
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
+            transform: translate(-50%, -50%) rotate(90deg) translateX(285px) rotate(-90deg);
+            animation-name: orbit2;
         }
-        /* Bottom */
         .partner-card:nth-child(3) {
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%) rotate(180deg) translateX(285px) rotate(-180deg);
+            animation-name: orbit3;
         }
-        /* Left */
         .partner-card:nth-child(4) {
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
+            transform: translate(-50%, -50%) rotate(270deg) translateX(285px) rotate(-270deg);
+            animation-name: orbit4;
+        }
+        
+        /* Orbit animations - each card rotates around center while staying upright */
+        @keyframes orbit1 {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg) translateX(285px) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg) translateX(285px) rotate(-360deg);
+            }
+        }
+        
+        @keyframes orbit2 {
+            from {
+                transform: translate(-50%, -50%) rotate(90deg) translateX(285px) rotate(-90deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(450deg) translateX(285px) rotate(-450deg);
+            }
+        }
+        
+        @keyframes orbit3 {
+            from {
+                transform: translate(-50%, -50%) rotate(180deg) translateX(285px) rotate(-180deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(540deg) translateX(285px) rotate(-540deg);
+            }
+        }
+        
+        @keyframes orbit4 {
+            from {
+                transform: translate(-50%, -50%) rotate(270deg) translateX(285px) rotate(-270deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(630deg) translateX(285px) rotate(-630deg);
+            }
         }
         
         .card-inner {
@@ -59,6 +96,12 @@
             cursor: pointer;
         }
         .partner-card.flipped .card-inner { transform: rotateY(180deg); }
+        
+        /* Pause orbit on hover or when flipped */
+        .partner-card:hover,
+        .partner-card.flipped {
+            animation-play-state: paused;
+        }
         .card-front, .card-back {
             position: absolute;
             width: 100%;
@@ -136,6 +179,7 @@
                 transform: none !important;
                 width: 90%;
                 max-width: 320px;
+                animation: none !important;
             }
         }
     </style>
